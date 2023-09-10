@@ -1,0 +1,54 @@
+
+
+
+@font-face{
+	font-family: sheratonf;
+	src: url(fonts/ClarendonLTStd.otf);
+}
+@font-face{
+	font-family: iconm;
+	src: url(fonts/marriott-icons.ttf);
+}
+@font-face{
+	font-family: proxima;
+	src: url(fonts/proxima-nova-regular.woff);
+}
+
+.icon-pencil, .icon-tel,.map-point {
+    font-family: 'iconm';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align:20%;
+    -webkit-font-smoothing: antialiased;
+}
+.icon-pencil:before {
+    content: "\e000";
+   
+}
+.icon-tel:before {
+    content: "\e00a";
+}
+.map-point:before {
+    content: "\e919";
+}
+
+
+body{background-color: white; font-family: proxima, Arial, sans-serif;margin:0;border:0; }
+.clr {clear: both;}
+.container1 {color: white; background-color: #10293c; text-align: center;}
+
+.texte {padding-left:5%;padding-right: 5%;}
+
+
+.logo1 {float:left; width: 20%;box-sizing: border-box;padding-top:5%;padding-left: 3%; }
+
+.textlogo {float:right; width: 80%;box-sizing: border-box;padding-bottom:1em;padding-right: 2%;font-size:2.5vw;}
+h1 {font-family: sheratonf, Arial,  sans-serif;font-size:4.5vw;}
+
+a {color: black;}
+a:visited {color:black;}
+a:hover {color:blue;}

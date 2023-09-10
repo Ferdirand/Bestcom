@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano>
+
+<!-- ************************ -->
+<!--         Messages         -->
+<!-- ************************ -->
+
+  <data name="fr_project_title"><![CDATA[Nouveau projet]]></data>
+
+
+  <data name="fr_panogroup44_title"><![CDATA[RDC]]></data>
+
+  <data name="fr_pano10_title"><![CDATA[01-IMG_0787 Panorama]]></data>
+  <data name="fr_pano11_title"><![CDATA[02-IMG_9697 Panorama]]></data>
+  <data name="fr_pano12_title"><![CDATA[03-IMG_0216 Panorama]]></data>
+  <data name="fr_pano13_title"><![CDATA[04-IMG_9778 Panorama]]></data>
+  <data name="fr_pano14_title"><![CDATA[05-IMG_0189 Panorama]]></data>
+  <data name="fr_pano15_title"><![CDATA[06-IMG_0159 Panorama]]></data>
+  <data name="fr_pano16_title"><![CDATA[07-IMG_0012 Panorama]]></data>
+  <data name="fr_pano17_title"><![CDATA[08-IMG_0042 Panorama]]></data>
+  <data name="fr_pano18_title"><![CDATA[09-IMG_0099 Panorama]]></data>
+  <data name="fr_pano19_title"><![CDATA[10-IMG_0075 Panorama]]></data>
+  <data name="fr_pano20_title"><![CDATA[11-IMG_9959 Panorama]]></data>
+  <data name="fr_pano21_title"><![CDATA[12-IMG_9859 Panorama]]></data>
+  <data name="fr_pano22_title"><![CDATA[13-IMG_9880 Panorama]]></data>
+  <data name="fr_pano41_title"><![CDATA[32-IMG_9904 Panorama]]></data>
+  <data name="fr_pano42_title"><![CDATA[33-IMG_9925 Panorama]]></data>
+  <data name="fr_pano43_title"><![CDATA[34-IMG_9969 Panorama]]></data>
+
+  <data name="fr_panogroup57_title"><![CDATA[Centre de remise en forme]]></data>
+
+  <data name="fr_pano23_title"><![CDATA[14-IMG_0406 Panorama]]></data>
+  <data name="fr_pano24_title"><![CDATA[15-IMG_0382 Panorama]]></data>
+  <data name="fr_pano25_title"><![CDATA[16-IMG_0246 Panorama]]></data>
+  <data name="fr_pano26_title"><![CDATA[17-IMG_0294 Panorama]]></data>
+  <data name="fr_pano27_title"><![CDATA[18-IMG_0336 Panorama]]></data>
+
+  <data name="fr_panogroup62_title"><![CDATA[Piscine]]></data>
+
+  <data name="fr_pano28_title"><![CDATA[19-IMG_0358 Panorama]]></data>
+  <data name="fr_pano29_title"><![CDATA[20-IMG_0366 Panorama]]></data>
+
+  <data name="fr_panogroup64_title"><![CDATA[Chambres]]></data>
+
+  <data name="fr_pano30_title"><![CDATA[21-IMG_0430 Panorama]]></data>
+  <data name="fr_pano31_title"><![CDATA[22-IMG_0502 Panorama]]></data>
+  <data name="fr_pano32_title"><![CDATA[23-IMG_0451 Panorama]]></data>
+  <data name="fr_pano33_title"><![CDATA[24-IMG_0525 Panorama]]></data>
+  <data name="fr_pano34_title"><![CDATA[25-IMG_0610 Panorama]]></data>
+  <data name="fr_pano35_title"><![CDATA[26-IMG_0544 Panorama]]></data>
+  <data name="fr_pano36_title"><![CDATA[27-IMG_0565 Panorama]]></data>
+  <data name="fr_pano37_title"><![CDATA[28-IMG_0586 Panorama]]></data>
+  <data name="fr_pano38_title"><![CDATA[29-IMG_0631 Panorama]]></data>
+  <data name="fr_pano39_title"><![CDATA[30-IMG_0655 Panorama]]></data>
+  <data name="fr_pano40_title"><![CDATA[31-IMG_0676 Panorama]]></data>
+
+
+
+
+
+	<data name="fr_panogroup44_floor_title"><![CDATA[RDC]]></data>
+	<data name="fr_spotmap136_tooltip"><![CDATA[Extérieur]]></data>
+	<data name="fr_spotmap349_tooltip"><![CDATA[Bar]]></data>
+	<data name="fr_spotmap431_tooltip"><![CDATA[Bar]]></data>
+	<data name="fr_spotmap433_tooltip"><![CDATA[Salle de banquets]]></data>
+	<data name="fr_spotmap434_tooltip"><![CDATA[Terrasse]]></data>
+	<data name="fr_spotmap435_tooltip"><![CDATA[Terrasse]]></data>
+	<data name="fr_spotmap436_tooltip"><![CDATA[Terrasse]]></data>
+	<data name="fr_spotmap437_tooltip"><![CDATA[Extérieur]]></data>
+	<data name="fr_spotmap439_tooltip"><![CDATA[Salles de réunions]]></data>
+	<data name="fr_spotmap440_tooltip"><![CDATA[Salles de réunions]]></data>
+	<data name="fr_spotmap441_tooltip"><![CDATA[Restaurant le Cliff]]></data>
+	<data name="fr_spotmap442_tooltip"><![CDATA[Restaurant/Cafétéria]]></data>
+	<data name="fr_spotmap443_tooltip"><![CDATA[Lounge]]></data>
+	<data name="fr_spotmap444_tooltip"><![CDATA[Ascenseurs RDC]]></data>
+	<data name="fr_spotmap445_tooltip"><![CDATA[Lobby]]></data>
+	<data name="fr_spotmap446_tooltip"><![CDATA[Réception]]></data>
+	<data name="fr_panogroup57_floor_title"><![CDATA[Centre de remise en forme]]></data>
+	<data name="fr_spotmap447_tooltip"><![CDATA[Ascenseurs +6]]></data>
+	<data name="fr_spotmap448_tooltip"><![CDATA[Centre de remise en forme]]></data>
+	<data name="fr_spotmap450_tooltip"><![CDATA[Salle de fitness]]></data>
+	<data name="fr_spotmap451_tooltip"><![CDATA[Sauna/Hammam]]></data>
+	<data name="fr_spotmap452_tooltip"><![CDATA[Jacuzzi]]></data>
+	<data name="fr_panogroup62_floor_title"><![CDATA[Piscine]]></data>
+	<data name="fr_spotmap454_tooltip"><![CDATA[Piscine]]></data>
+	<data name="fr_spotmap455_tooltip"><![CDATA[Piscine]]></data>
+	<data name="fr_panogroup64_floor_title"><![CDATA[Chambres]]></data>
+	<data name="fr_spotmap457_tooltip"><![CDATA[Ascenseurs +5]]></data>
+	<data name="fr_spotmap458_tooltip"><![CDATA[Chambre Premium avec vue sur mer]]></data>
+	<data name="fr_spotmap459_tooltip"><![CDATA[Chambre Premium avec vue sur mer]]></data>
+	<data name="fr_spotmap460_tooltip"><![CDATA[Chambre Premium avec vue sur mer]]></data>
+	<data name="fr_spotmap462_tooltip"><![CDATA[Suite Studio avec vue sur mer]]></data>
+	<data name="fr_spotmap463_tooltip"><![CDATA[Suite Studio avec vue sur mer]]></data>
+	<data name="fr_spotmap464_tooltip"><![CDATA[Suite Studio avec vue sur mer]]></data>
+	<data name="fr_spotmap465_tooltip"><![CDATA[Suite Studio avec vue sur la ville]]></data>
+	<data name="fr_spotmap466_tooltip"><![CDATA[Suite Studio avec vue sur la ville]]></data>
+	<data name="fr_spotmap468_tooltip"><![CDATA[Suite Studio avec vue sur la ville]]></data>
+	<data name="fr_spotmap469_tooltip"><![CDATA[Suite Studio avec vue sur la ville]]></data>
+
+  <data name="fr_floorPlanmenu_label"><![CDATA[Sélectionner un plan]]></data>
+  <data name="fr_floorPlandisplay_close_text"><![CDATA[Fermer]]></data>
+
+
+  <data name="fr_vr_setup_hmd0"><![CDATA[CHOIX DU HMD]]></data>
+  <data name="fr_vr_setup_advanced"><![CDATA[PARAMETRES AVANCES]]></data>
+  <data name="fr_vr_setup_title"><![CDATA[PARAMETRES WEB VR]]></data>
+  <data name="fr_vr_setup_dvn1"><![CDATA[Appareil:]]></data>
+  <data name="fr_vr_setup_siz1"><![CDATA[Taille de l&#39;écran:]]></data>
+  <data name="fr_vr_setup_ipd1"><![CDATA[IPD:]]></data>
+  <data name="fr_vr_setup_hmd1"><![CDATA[HMD:]]></data>
+  <data name="fr_vr_setup_hmd3"><![CDATA[Personnaliser]]></data>
+  <data name="fr_vr_setup_cal"><![CDATA[Calibrer le gyroscope]]></data>
+  <data name="fr_vr_setup_sav"><![CDATA[ENREGISTRER]]></data>
+  <data name="fr_vr_setup_rst"><![CDATA[REINITIALISER]]></data>
+  <data name="fr_vr_setup_simple"><![CDATA[SIMPLE]]></data>
+  <data name="fr_vr_setup_cls"><![CDATA[FERMER]]></data>
+  <data name="fr_vr_setup_m31"><![CDATA[PARAMETRES DU HMD]]></data>
+  <data name="fr_vr_setup_fov1"><![CDATA[FOV:]]></data>
+  <data name="fr_vr_setup_dst1"><![CDATA[Distorsion:]]></data>
+  <data name="fr_vr_setup_d2tx"><![CDATA[Distorsion 2:]]></data>
+  <data name="fr_vr_setup_vig1"><![CDATA[Vignettage:]]></data>
+  <data name="fr_vr_setup_cac1"><![CDATA[Aberration chromatique:]]></data>
+  <data name="fr_vr_setup_olp1"><![CDATA[Recouvrement:]]></data>
+  <data name="fr_vr_setup_m35"><![CDATA[RETOUR]]></data>
+  <data name="fr_vr_setup_cb1"><![CDATA[GYROSCOPE]]></data>
+  <data name="fr_vr_setup_cb2"><![CDATA[Placer l&#39;appareil sur une surface plane et stable[br]puis tapez sur CALIBRER[br]pour corriger la dérive du gyroscope.]]></data>
+  <data name="fr_vr_setup_cb3"><![CDATA[CALIBRER]]></data>
+  <data name="fr_vr_setup_cb4"><![CDATA[REINITIALISER]]></data>
+  <data name="fr_vr_setup_cb5"><![CDATA[RETOUR]]></data>
+  <data name="fr_vr_setup_cb6"><![CDATA[Calibration en cours...]]></data>
+  <data name="fr_vr_setup_cb7"><![CDATA[Calibration réussie]]></data>
+  <data name="fr_vr_setup_cb8"><![CDATA[Echec de la calibration]]></data>
+  <data name="fr_vr_setup_unavailable"><![CDATA[Le mode VR[br]n&#39;est pas disponible sur cet appareil]]></data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</krpano>

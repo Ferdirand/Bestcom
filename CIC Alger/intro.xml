@@ -1,0 +1,172 @@
+<krpano version="1.16" onstart="set(fullscreen,true);set(events.onidle, null);stopallsounds(globalstop,true);playsound(echahid, audio ar/ECHAHID.mp3, 1, null);">
+	
+	<!-- sound plugin -->
+	
+   <plugin name="soundinterface" url="%SWFPATH%/plugins/soundinterface.swf" rootpath="%CURRENTXML%" preload="true" keep="true" onload="stopallsounds(globalstop,true)"/> 
+			
+	<plugin name="snd" url="plugins/soundonoff.png" align="lefttop" x="10" y="10" alpha="0.25" scale="1.0" zorder="99" 
+		    onover="tween(alpha,1);" 
+		    onout="tween(alpha,0.25);" 
+	        crop="0|0|50|50"
+			keep="true"
+	        onclick="switch(soundinterface.mute); switch(crop, 0|0|50|50, 0|50|50|50);" />
+	
+	<!-- use a grid preview pano as background -->
+	
+	<preview url="images/white.jpg" />
+
+	<!-- view settings -->
+	<view hlookat="0" vlookat="0" fovtype="VFOV" fov="100" fovmin="60" fovmax="150" />
+	
+	<!-- <hotspot name="hs5" style="flyoutimage" url="images/B 5 -panneau mosque.jpg" 
+	         ath="-30.3" atv="2.4" distorted="true" rx="2.75" ry="9.75" rz="0.10" width="720" height="960" scale="0.54"
+	         /> -->
+			 
+	<!-- <plugin name="soundinterface" url="plugins/soundinterface.swf" alturl="soundinterface.js" preload="true" keep="true" globalstop="true" /> -->
+
+			 
+	<layer name="bsp02" url="images/menu 4.jpg" align="center" x="0" y="0" width="100%" height="100%" enabled="false" zorder="1" onloaded="set(alpha,0); tween(alpha,1.0);" />
+	
+	<layer name="ba" url="images/arabe.jpg" align="topleft" x="0" y="18.75%" width="30.4%" height="23.4%" alpha='0.0' onover="tween(layer[ba].alpha, 1.0, 0.25);"  onout="tween(layer[ba].alpha, 0.0, 0.25, default);" ondown="loadlanguage('tour ar.xml','a');" zorder="2" />
+	<layer name="bf" url="images/francais.jpg" align="topleft" x="0" y="42.4%" width="30.4%" height="23.4%" alpha='0.0' onover="tween(layer[bf].alpha, 1.0, 0.25);"  onout="tween(layer[bf].alpha, 0.0, 0.25, default);" ondown="loadlanguage('tour fr.xml','f');" zorder="2" /> 
+	<layer name="be" url="images/english.jpg" align="topleft" x="0" y="66.15%" width="30.4%" height="23.4%" alpha='0.0' onover="tween(layer[be].alpha, 1.0, 0.25);"  onout="tween(layer[be].alpha, 0.0, 0.25, default);" ondown="loadlanguage('tour en.xml','e');" zorder="2" /> 
+	
+	<!--
+	<action name="startup">
+	tween(layer[bsp02].rotate, 0.0, 4.0, easeOutQuint);
+	</action> -->
+
+	
+	<action name="loadlanguage">
+	
+		<!-- clear the ondown, onclick events from the caller (to avoid double clicking) -->
+		set(ondown,null);
+		set(onclick,null);
+		<!--set(layer[ba].ondown, 'set(ondown,null);' );
+		set(layer[bf].ondown, 'set(ondown,null);' );
+		set(layer[be].ondown, 'set(ondown,null);' );-->
+		set(layer[ba].ondown, null);
+		set(layer[bf].ondown, null);
+		set(layer[be].ondown, null);
+		set(layer[ba].onover, null);
+		set(layer[bf].onover, null);
+		set(layer[be].onover, null);
+		
+		<!-- fadeout the background + buttons -->
+		tween(layer[bsp02].alpha, 0.0, 0.5, default, removelayer(bsp02));
+		tween(layer[ba].alpha, 0.0, 0.5, default, removelayer(ba));
+		tween(layer[bf].alpha, 0.0, 0.5, default, removelayer(bf));
+		tween(layer[be].alpha, 0.0, 0.5, default, removelayer(be));
+		
+
+		<!-- then add an 'back' button with keep=true for returning to the start xml -->
+		add_back_button%2('خروج','Sortir','Exit'); 
+
+		<!-- and finally load the given pano (a bit delayed to see the slide out animation) -->
+		delayedcall(0.7, loadpano(%1, null, MERGE, BLEND(0.5)) );
+	</action>
+	
+	<action name="add_back_buttona">
+		
+		addlayer(backbutton);
+		layer[backbutton].loadstyle('button');
+		set(layer[backbutton].style, null);
+		set(layer[backbutton].keep, true);
+		set(layer[backbutton].html, '%1');
+		set(layer[backbutton].align, 'righttop');
+		set(layer[backbutton].x, 32);
+		set(layer[backbutton].y, 32);
+		set(layer[backbutton].width, 70);
+		set(layer[backbutton].height, 50);
+		ifnot(device.ie, set(layer[backbutton].roundedge, 20); );
+		set(layer[backbutton].zorder, 99999);
+		set(layer[backbutton].alpha, 0.0);
+		set(layer[backbutton].onloaded, delayedcall(1.0,tween(alpha,0.7)); );
+		set(layer[backbutton].ondown, 'set(ondown,null); stopallsounds(); resetkrpano(); loadpano(%SWFPATH%/intro.xml,null,IGNOREKEEP,BLEND(1));' );
+	</action>
+	
+	<action name="add_back_buttonf">
+		
+		addlayer(backbutton);
+		layer[backbutton].loadstyle('button');
+		set(layer[backbutton].style, null);
+		set(layer[backbutton].keep, true);
+		set(layer[backbutton].html, '%2');
+		set(layer[backbutton].align, 'righttop');
+		set(layer[backbutton].x, 32);
+		set(layer[backbutton].y, 32);
+		set(layer[backbutton].width, 70);
+		set(layer[backbutton].height, 50);
+		ifnot(device.ie, set(layer[backbutton].roundedge, 20); );
+		set(layer[backbutton].zorder, 99999);
+		set(layer[backbutton].alpha, 0.0);
+		set(layer[backbutton].onloaded, delayedcall(1.0,tween(alpha,0.7)); );
+		set(layer[backbutton].ondown, 'set(ondown,null); stopallsounds(); resetkrpano(); loadpano(%SWFPATH%/intro.xml,null,IGNOREKEEP,BLEND(1));' );
+	</action>
+	
+	<action name="add_back_buttone">
+		
+		addlayer(backbutton);
+		layer[backbutton].loadstyle('button');
+		set(layer[backbutton].style, null);
+		set(layer[backbutton].keep, true);
+		set(layer[backbutton].html, '%3');
+		set(layer[backbutton].align, 'righttop');
+		set(layer[backbutton].x, 32);
+		set(layer[backbutton].y, 32);
+		set(layer[backbutton].width, 70);
+		set(layer[backbutton].height, 50);
+		ifnot(device.ie, set(layer[backbutton].roundedge, 20); );
+		set(layer[backbutton].zorder, 99999);
+		set(layer[backbutton].alpha, 0.0);
+		set(layer[backbutton].onloaded, delayedcall(1.0,tween(alpha,0.7)); );
+		set(layer[backbutton].ondown, 'set(ondown,null); stopallsounds(); resetkrpano(); loadpano(%SWFPATH%/intro.xml,null,IGNOREKEEP,BLEND(1));' );
+	</action>
+	
+	
+	<action name="resetkrpano">
+		<!-- reset/clear everything from a previous example -->
+
+		<!-- remove all scene/data/action/events/style elements -->
+		set(scene.count, 0);
+		set(data.count, 0);
+		set(action.count, 0);
+		set(events.count, 0);
+		set(style.count, 0);
+		
+		
+		<!-- remove all events -->
+		set(onstart, null);
+		set(events.onenterfullscreen, null);
+		set(events.onexitfullscreen, null);
+		set(events.onxmlcomplete, null);
+		set(events.onpreviewcomplete, null);
+		set(events.onloadcomplete, null);
+		set(events.onloaderror, null);
+		set(events.onnewpano, null);
+		set(events.onremovepano, null);
+		set(events.onkeydown, null);
+		set(events.onkeyup, null);
+		set(events.onviewchange, null);
+		set(events.onclick, null);
+		set(events.onmousedown, null);
+		set(events.onmouseup, null);
+		set(events.onmousewheel, null);
+		set(events.onidle, null);
+		set(events.onresize, null);
+		
+		<!-- if defined delete the 'startscene' variable (used by many tours as startup setting) -->
+		delete(startscene);
+
+	</action>
+	
+	<style name="button"
+		url="%SWFPATH%/plugins/textfield.swf"
+		children="false"
+		css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:16px;"
+		vcenter="true"
+		backgroundcolor="0x000000" backgroundalpha="0.667" roundedge="10" border="false"
+		shadow="0.1" shadowrange="8" shadowcolor="0xFFFFFF"
+		/>
+	
+	</krpano>

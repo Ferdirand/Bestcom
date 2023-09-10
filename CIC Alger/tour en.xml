@@ -1,0 +1,1560 @@
+﻿<krpano version="1.19" title="CIC Alger">
+	
+	
+	<!-- include the both plugins  
+	
+	<plugin name="editor" url="%SWFPATH%/plugins/editor.swf" keep="true" />
+	<plugin name="options" url="%SWFPATH%/plugins/options.swf" keep="true" /> --> 
+	<!-- <include url="%SWFPATH%/plugins/combobox.xml" /> --> 
+	<include url="skin/vtourskin.xml" />
+	
+	<autorotate enabled="true"
+            waittime="30"
+            speed="5.0"
+            />
+			
+	<!-- a style for a simple textfield element -->
+	<style name="text"
+	       url="%SWFPATH%/plugins/textfield.swf"
+	       background="false"
+	       css="color:#FFFFFF;"
+	       enabled="false"
+	       />
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               gyro="true"
+	               webvr="false"
+	               webvr_gyro_keeplookingdirection="false"
+	               webvr_prev_next_hotspots="true"
+	               littleplanetintro="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext="loading..."
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+	
+	<!-- a special action for dragging a layer only vertically within its parent layer -->
+	<action name="draglayer_vertically_within_parent">
+		copy(drag_currenty, y);
+		copy(drag_stagey, mouse.stagey);
+		calc(y_min, layer[get(parent)].pixelheight - pixelheight);
+		if(y_min LT 0,
+			asyncloop(pressed,
+				calc(y, drag_currenty + (mouse.stagey - drag_stagey));
+				clamp(y, get(y_min), 0);
+			  );
+		  );
+	</action>
+	
+	<!-- startup action - load the first scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+	</action>
+	
+	<!-- mixed static/dynamic example - add items dynamically 
+	<combobox name="cbscenes" design="vtour" align="righttop" x="10" y="10" onloaded="add_scene_items();" />
+	<action name="add_scene_items" scope="local">
+		for(set(i,0), i LT scene.count, inc(i),
+			caller.additem(calc('[img src=[dq]' + scene[get(i)].thumburl +  '[dq] style=[dq]border:1px solid rgba(255,255,255,0.5);width:48px;height:32px;vertical-align:middle;margin-right:8px;[dq]/] '+scene[get(i)].title), calc('loadscene('+i+',null,MERGE,BLEND(0.5))') );
+		);
+	</action>-->
+	
+	 <layer name="map" type="container" align="lefttop" keep="true" x="0" y="0" width="stagewidth" height="stageheight"
+	/> 
+	
+	
+	<!-- the map image -->
+	<layer name="map1" url="skin/niveau 1.png" keep="true" handcursor="false" capture="false"
+	       align="lefttop" x="10" y="12.4%" width="100%" height="prop"
+	       scale="0.15" scalechildren="true"
+	       onclick="openmap1();closemap2();closemap3();closemap4();"
+	       /> 
+		   
+	<layer name="map2" url="skin/niveau 0.png" keep="true" handcursor="false" capture="false"
+	       align="lefttop" x="10" y="23.8%" width="100%" height="prop"
+	       scale="0.15" scalechildren="true"
+	       onclick="openmap2();closemap1();closemap3();closemap4();"
+	       /> 
+		   
+	<layer name="map3" url="skin/niveau -1.png" keep="true" handcursor="false" capture="false"
+	       align="lefttop" x="10" y="35%" width="100%" height="prop"
+	       scale="0.15" scalechildren="true"
+	       onclick="openmap3();closemap1();closemap2();closemap4();"
+	       /> 
+		   
+	<layer name="map4" url="skin/niveau 2.png" keep="true" handcursor="false" capture="false"
+	       align="lefttop" x="10" y="1%" width="100%" height="prop"
+	       scale="0.15" scalechildren="true"
+	       onclick="openmap4();closemap1();closemap2();closemap3();"
+	       /> 
+	
+		<!-- use a <style> to share the same attriubtes for all hotspots -->
+
+	<!-- map opening - scale the map up to 100% (or smaller if the screen is too small)  -->
+	<action name="openmap1">
+		set(layer[map1].onclick, closemap1(); );
+		
+
+		set(bigscale,1);
+		
+		set(layer[map1].zorder, 2);
+		tween(layer[map1].x, 0);
+		tween(layer[map1].y, 0);
+		tween(layer[map1].scale, get(bigscale));
+	</action>
+
+	<action name="openmap2">
+		set(layer[map2].onclick, closemap2(); );
+		
+
+		set(bigscale,1);
+		
+		set(layer[map2].zorder, 2);
+		tween(layer[map2].x, 0);
+		tween(layer[map2].y, 0);
+		tween(layer[map2].scale, get(bigscale));
+	</action>
+	
+	<action name="openmap3">
+		set(layer[map3].onclick, closemap3(); );
+		
+
+		set(bigscale,1);
+		
+		set(layer[map3].zorder, 2);
+		tween(layer[map3].x, 0);
+		tween(layer[map3].y, 0%);
+		tween(layer[map3].scale, get(bigscale));
+	</action>
+	
+	<action name="openmap4">
+		set(layer[map4].onclick, closemap4(); );
+		
+
+		set(bigscale,1);
+		
+		set(layer[map4].zorder, 2);
+		tween(layer[map4].x, 0);
+		tween(layer[map4].y, 0);
+		tween(layer[map4].scale, get(bigscale));
+	</action>
+	
+	<!-- map closing - scale the map back to 0.25 of its image pixelsize -->
+	<action name="closemap1">
+		set(layer[map1].onclick, openmap1();closemap2();closemap3();closemap4(); );
+		
+		set(layer[map1].zorder, 1);
+		tween(layer[map1].x, 10);
+		tween(layer[map1].y, 12.4%);
+		tween(layer[map1].scale, 0.15);
+	</action> 
+	
+	<action name="closemap2">
+		set(layer[map2].onclick, openmap2();closemap1();closemap3();closemap4(); );
+		
+		set(layer[map2].zorder, 1);
+		tween(layer[map2].x, 10);
+		tween(layer[map2].y, 23.8%);
+		tween(layer[map2].scale, 0.15);
+	</action> 
+	
+	<action name="closemap3">
+		set(layer[map3].onclick, openmap3();closemap1();closemap2();closemap4(); );
+		
+		set(layer[map3].zorder, 1);
+		tween(layer[map3].x, 10);
+		tween(layer[map3].y, 35%);
+		tween(layer[map3].scale, 0.15);
+	</action> 
+	
+	<action name="closemap4">
+		set(layer[map4].onclick, openmap4();closemap1();closemap2();closemap3(); );
+		
+		set(layer[map4].zorder, 1);
+		tween(layer[map4].x, 10);
+		tween(layer[map4].y, 1%);
+		tween(layer[map4].scale, 0.15);
+	</action> 
+	
+	<!-- the map spot images -->
+	<style name="mapspot1" keep="true" url="skin/camicon.png" parent="map1" align="lefttop" edge="center" scale.mobile="2" 
+			onover="copy(layer[tooltip].html, tooltip);
+	               set(layer[tooltip].visible, true);
+	               tween(layer[tooltip].alpha, 1.0, 0.5);
+	               asyncloop(hovering, copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );"
+	       onout="tween(layer[tooltip].alpha, 0.0, 0.25, default, set(layer[tooltip].visible,false), copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );"
+		   />
+	<style name="mapspot2" keep="true" url="skin/camicon.png" parent="map2" align="lefttop" edge="center" scale.mobile="2"  onover="copy(layer[tooltip].html, tooltip);
+	               set(layer[tooltip].visible, true);
+	               tween(layer[tooltip].alpha, 1.0, 0.5);
+	               asyncloop(hovering, copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );"
+	       onout="tween(layer[tooltip].alpha, 0.0, 0.25, default, set(layer[tooltip].visible,false), copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );"
+		  
+	       />
+	<style name="mapspot3" keep="true" url="skin/camicon.png" parent="map3" align="lefttop" edge="center" scale.mobile="2" onover="copy(layer[tooltip].html, tooltip);
+	               set(layer[tooltip].visible, true);
+	               tween(layer[tooltip].alpha, 1.0, 0.5);
+	               asyncloop(hovering, copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );"
+	       onout="tween(layer[tooltip].alpha, 0.0, 0.25, default, set(layer[tooltip].visible,false), copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );" />
+	
+	<style name="mapspot4" keep="true" url="skin/camicon.png" parent="map4" align="lefttop" edge="center" scale.mobile="2" onover="copy(layer[tooltip].html, tooltip);
+	               set(layer[tooltip].visible, true);
+	               tween(layer[tooltip].alpha, 1.0, 0.5);
+	               asyncloop(hovering, copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );"
+	       onout="tween(layer[tooltip].alpha, 0.0, 0.25, default, set(layer[tooltip].visible,false), copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );" />
+		   
+	<!-- the 'tooltip' textfield -->
+	<layer name="tooltip" keep="true"
+	       url="%SWFPATH%/plugins/textfield.swf"
+	       parent="STAGE"
+	       visible="false" alpha="0"
+	       enabled="false"
+	       align="lefttop"
+	       edge="bottom"
+	       oy="-2"
+	       background="false" backgroundcolor="0xFFFFFF" backgroundalpha="1.0"
+	       border="false" bordercolor="0x000000" borderalpha="1.0"
+	       borderwidth="1.0" roundedge="0"
+	       shadow="0.0" shadowrange="4.0" shadowangle="45" shadowcolor="0x000000" shadowalpha="1.0"
+	       textshadow="1" textshadowrange="6.0" textshadowangle="90" textshadowcolor="0x000000" textshadowalpha="1.0"
+	       css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;"
+	       html=""
+		   zorder="99"
+	       />
+		   
+	<layer name="lobby1" style="mapspot2" x="893" y="497" zorder="3" onclick="mapspot_loadscene2(scene_Lobby_IMG_6134_Panorama);" tooltip="Lobby" />
+	<layer name="lobby2" style="mapspot2" x="1070" y="460" zorder="3" onclick="mapspot_loadscene2(scene_Lobby_IMG_6142_Panorama); " tooltip="Lobby" />
+	<layer name="lobby3" style="mapspot2" x="860" y="260" zorder="3" onclick="mapspot_loadscene2(scene_Lobby_IMG_6217_Panorama);" tooltip="Lobby" />
+	<layer name="audito1" style="mapspot2" x="655" y="379" zorder="3" onclick="mapspot_loadscene2(scene_Auditorium_IMG_5567_Panorama);" tooltip="Auditorium Icosium" />
+	<layer name="djemila1" style="mapspot2" x="925" y="180" zorder="3" onclick="mapspot_loadscene2(scene_Djemila_IMG_2160_Panorama);" tooltip="Djemila hall" />
+	<layer name="confpresse" style="mapspot2" x="595" y="125" zorder="3" onclick="mapspot_loadscene2(scene_Salle_de_Conf_IMG_0309_Panorama);" tooltip="Press conference room" />
+	<layer name="loungepresse" style="mapspot2" x="700" y="130" zorder="3" onclick="mapspot_loadscene2(scene_Lounge_Presse_IMG_5837_Panorama);" tooltip="Press lounge" />
+	<layer name="sallepoly" style="mapspot2" x="1146" y="240" zorder="3" onclick="mapspot_loadscene2(scene_Salle_Polyvalente_2_IMG_2852_Panorama);" tooltip="Multipurpose rooms" />
+	<layer name="sallepoly2" style="mapspot2" x="1235" y="240" zorder="3" onclick="mapspot_loadscene2(scene_Salle_Polyvalente_3_IMG_2886_Panorama);" tooltip="Multipurpose rooms" />
+	<layer name="sallepoly3" style="mapspot2" x="1318" y="240" zorder="3" onclick="mapspot_loadscene2(scene_Salle_Polyvalente_4_IMG_2895_Panorama);" tooltip="Multipurpose rooms" />
+	<layer name="sallepoly4" style="mapspot2" x="1405" y="240" zorder="3" onclick="mapspot_loadscene2(scene_Salle_Polyvalente_5_IMG_2903_Panorama);" tooltip="Multipurpose rooms" />
+	<layer name="sallepoly5" style="mapspot2" x="1492" y="240" zorder="3" onclick="mapspot_loadscene2(scene_Salle_Polyvalente_6_IMG_2918_Panorama);" tooltip="Multipurpose rooms" />
+	
+	
+	
+	<layer name="burdelegation1" style="mapspot2" x="385" y="158" zorder="3" onclick="mapspot_loadscene2(scene_Bureaux_D__l__gations_IMG_5891_Panorama);" tooltip="Delegations offices" />
+	<layer name="burdelegation2" style="mapspot2" x="385" y="128" zorder="3" onclick="mapspot_loadscene2(scene_Bureaux_D__l__gations_IMG_5879_Panorama);" tooltip="Delegations offices" />
+	<layer name="burdelegation3" style="mapspot2" x="385" y="98" zorder="3" onclick="mapspot_loadscene2(scene_Bureaux_D__l__gations_IMG_5872_Panorama);" tooltip="Delegations offices" />
+	<layer name="plaza" style="mapspot2" x="430" y="195" zorder="3" onclick="mapspot_loadscene2(scene_Plaza_IMG_0349_Panorama);" tooltip="Plaza café" />
+	<layer name="plaza2" style="mapspot2" x="330" y="230" zorder="3" onclick="mapspot_loadscene2(scene_Plaza_IMG_0409_Panorama);" tooltip="Plaza café" />
+	<layer name="cherchell1" style="mapspot2" x="120" y="146" zorder="3" onclick="mapspot_loadscene2(scene_Cherchell_IMG_0494_Panorama);" tooltip="Cherchell restaurant" />
+	<layer name="cherchell2" style="mapspot2" x="110" y="105" zorder="3" onclick="mapspot_loadscene2(scene_Cherchell_IMG_0470_Panorama);" tooltip="Cherchell restaurant" />
+	<layer name="oasis1" style="mapspot2" x="1627" y="421" zorder="3" onclick="mapspot_loadscene2(scene_Oasis_IMG_5643_Panorama);" tooltip="Oasis restaurant" />
+	<layer name="oasis3" style="mapspot2" x="1565" y="606" zorder="3" onclick="mapspot_loadscene2(scene_Oasis_IMG_5685_Panorama);" tooltip="Oasis café" />
+	<layer name="oasis4" style="mapspot2" x="1460" y="430" zorder="3" onclick="mapspot_loadscene2(scene_Oasis_IMG_0035_Panorama);" tooltip="Oasis restaurant" />
+	<layer name="oasis5" style="mapspot2" x="1390" y="390" zorder="3" onclick="mapspot_loadscene2(scene_Oasis_IMG_0062_Panorama);" tooltip="Oasis restaurant" />
+	<layer name="rosesables" style="mapspot2" x="1560" y="376" zorder="3" onclick="mapspot_loadscene2(scene_La_Rose_des_Sables_IMG_5751_Panorama);" tooltip="La Roses des sables café" />
+	<layer name="ambre" style="mapspot2" x="390" y="606" zorder="3" onclick="mapspot_loadscene2(scene_Caf___Ambre_IMG_6021_Panorama);" tooltip="Ambre café" />
+	
+	<layer name="azul" style="mapspot1" x="1550" y="370" zorder="3" onclick="mapspot_loadscene1(scene_Caf___AzulIMG_6629_Panorama);" tooltip="Azul café" />
+	<layer name="djemila2" style="mapspot1" x="985" y="240" zorder="3" onclick="mapspot_loadscene1(scene_Djemila_IMG_6091_Panorama);" tooltip="Djemila hall" />
+	<layer name="banquets" style="mapspot1" x="1270" y="285" zorder="3" onclick="mapspot_loadscene1(scene_Salle_de_Banquets_Sahara_IMG_6483_Panorama);" tooltip="Banquet room Sahara"  />
+	<layer name="banquets2" style="mapspot1" x="1172" y="285" zorder="3" onclick="mapspot_loadscene1(scene_Salle_de_Banquets_2_IMG_2861_Panorama);" tooltip="Banquet room Sahara"  />
+	<layer name="audito2" style="mapspot1" x="725" y="435" zorder="3" onclick="mapspot_loadscene1(scene_Auditorium_IMG_5582_Panorama);" tooltip="Auditorium Icosium" />
+	
+	<layer name="Suite4" style="mapspot1" x="542" y="102" zorder="3" onclick="mapspot_loadscene1(scene_Suite_IMG_2648_Panorama);" tooltip="Bedroom suites" />
+	<layer name="Suite3" style="mapspot1" x="552" y="140" zorder="3" onclick="mapspot_loadscene1(scene_Suite_IMG_2626_Panorama);" tooltip="Bedroom suites" />
+	<layer name="Suite2" style="mapspot1" x="503" y="148" zorder="3" onclick="mapspot_loadscene1(scene_Suite_IMG_2600_Panorama);" tooltip="Bedroom suites" />
+	<layer name="Suite1" style="mapspot1" x="500" y="120" zorder="3" onclick="mapspot_loadscene1(scene_Suite_IMG_2609_Panorama);" tooltip="Bedroom suites" />
+	
+	
+	<layer name="Salonvip1" style="mapspot1" x="350" y="410" zorder="3" onclick="mapspot_loadscene1(scene_Salon_Vip_IMG_5377_Panorama);" tooltip="VIP lounge" />
+	<layer name="Salonvip2" style="mapspot1" x="390" y="510" zorder="3" onclick="mapspot_loadscene1(scene_Salon_Vip_IMG_5292_Panorama);" tooltip="VIP lounge" />
+	<layer name="Salonblanc" style="mapspot1" x="290" y="230" zorder="3" onclick="mapspot_loadscene1(scene_Salon_Blanc_IMG_5391_Panorama);" tooltip="Formal lounge" />
+	<layer name="Salletri" style="mapspot1" x="410" y="220" zorder="3" onclick="mapspot_loadscene1(scene_Salle_Triangulaire_IMG_5443_Panorama);" tooltip="Head of states summit great room" />
+	<layer name="Sallereunionvip" style="mapspot1" x="372" y="138" zorder="3" onclick="mapspot_loadscene1(scene_Salle_Reunion_Vip_IMG_5520_Panorama);" tooltip="Meeting room" />
+	<layer name="Sallereunionvip2" style="mapspot1" x="445" y="138" zorder="3" onclick="mapspot_loadscene1(scene_Salle_Reunion_Vip_IMG_5398_Panorama);" tooltip="Meeting room" />
+	<layer name="Restovip" style="mapspot1" x="147" y="138" zorder="3" onclick="mapspot_loadscene1(scene_Resto_Vip_IMG_0250_Panorama);" tooltip="VIP restaurant" />
+	<layer name="Hallvip" style="mapspot1" x="310" y="320" zorder="3" onclick="mapspot_loadscene1(scene_Hall_Vip_IMG_9887_Panorama);" tooltip="VIP hall" />
+	
+	<layer name="hallexpo" style="mapspot3" x="1020" y="480" zorder="3" onclick="mapspot_loadscene3(scene_Hall_d_Exposition_IMG_6814_Panorama);" tooltip="Exhibition hall"/>
+	
+	<layer name="crepuscule" style="mapspot4" x="1570" y="340" zorder="3" onclick="mapspot_loadscene4(scene_crepuscule_IMG_0208_Panorama);" tooltip="Crépuscule restaurant"/>
+	<layer name="crepusculebar" style="mapspot4" x="1660" y="340" zorder="3" onclick="mapspot_loadscene4(scene_crepuscule_IMG_0229_Panorama);" tooltip="Crépuscule restaurant"/>
+	<layer name="crepusculerec" style="mapspot4" x="1670" y="420" zorder="3" onclick="mapspot_loadscene4(scene_crepuscule_IMG_0112_Panorama);" tooltip="Crépuscule restaurant"/>
+	<layer name="crepusculecer" style="mapspot4" x="1730" y="400" zorder="3" onclick="mapspot_loadscene4(scene_crepuscule_IMG_0119_Panorama);" tooltip="Crépuscule restaurant"/>
+	
+	
+	<!-- action for loading the scene when clicking on the map spots -->
+	<action name="mapspot_loadscene1">
+		tween(layer[tooltip].alpha, 0.0, 0.25, default, set(layer[tooltip].visible,false), copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );
+		if(layer[map1].scale GT 0.15,
+			<!-- special mode for zoomed map: hide big map, loadscene, show small map -->
+			set(layer[map1].enabled, false);
+			tween(layer[map1].alpha, 0.0, 0.15, default,
+				set(layer[map2].enabled, false);
+				set(layer[map3].enabled, false);
+				set(layer[map4].enabled, false);
+				tween(layer[map2].alpha, 0.0, 0.15, default);
+				tween(layer[map3].alpha, 0.0, 0.15, default);
+				tween(layer[map4].alpha, 0.0, 0.15, default);
+				loadscene(%1, null, MERGE, BLEND(1));
+
+				set(layer[map1].onclick, openmap1(); );
+				layer[map1].changeorigin(lefttop,lefttop);
+
+				set(layer[map1].x, 10);
+				set(layer[map1].y, 12.4%);
+				set(layer[map1].scale, 0.15);
+
+				set(events[sceneload].onloadcomplete,
+					delayedcall(1,
+						tween(layer[map1].alpha, 1.0, 0.5, default, set(layer[map1].enabled, true); );
+						tween(layer[map2].alpha, 1.0, 0.5, default, set(layer[map2].enabled, true); );
+						tween(layer[map3].alpha, 1.0, 0.5, default, set(layer[map3].enabled, true); );
+						tween(layer[map4].alpha, 1.0, 0.5, default, set(layer[map4].enabled, true); );
+					  );
+				  );
+			  );
+		  ,
+			<!-- small map: just load the scene -->
+			loadscene(%1, null, MERGE, BLEND(1));
+		  );
+	</action>
+	
+	<action name="mapspot_loadscene2">
+		tween(layer[tooltip].alpha, 0.0, 0.25, default, set(layer[tooltip].visible,false), copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );
+		if(layer[map2].scale GT 0.15,
+			<!-- special mode for zoomed map: hide big map, loadscene, show small map -->
+			set(layer[map2].enabled, false);
+			tween(layer[map2].alpha, 0.0, 0.15, default,
+				set(layer[map1].enabled, false);
+				set(layer[map3].enabled, false);
+				set(layer[map4].enabled, false);
+				tween(layer[map1].alpha, 0.0, 0.15, default);
+				tween(layer[map3].alpha, 0.0, 0.15, default);
+				tween(layer[map4].alpha, 0.0, 0.15, default);
+				loadscene(%1, null, MERGE, BLEND(1));
+
+				set(layer[map2].onclick, openmap2(); );
+				layer[map2].changeorigin(lefttop,lefttop);
+
+				set(layer[map2].x, 10);
+				set(layer[map2].y, 23.8%);
+				set(layer[map2].scale, 0.15);
+
+				set(events[sceneload].onloadcomplete,
+					delayedcall(1,
+						tween(layer[map2].alpha, 1.0, 0.5, default, set(layer[map2].enabled, true); );
+						tween(layer[map1].alpha, 1.0, 0.5, default, set(layer[map1].enabled, true); );
+						tween(layer[map3].alpha, 1.0, 0.5, default, set(layer[map3].enabled, true); );
+						tween(layer[map4].alpha, 1.0, 0.5, default, set(layer[map4].enabled, true); );
+					  );
+				  );
+			  );
+		  ,
+			<!-- small map: just load the scene -->
+			loadscene(%1, null, MERGE, BLEND(1));
+		  );
+	</action>
+	
+	<action name="mapspot_loadscene3">
+		tween(layer[tooltip].alpha, 0.0, 0.25, default, set(layer[tooltip].visible,false), copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );
+		if(layer[map3].scale GT 0.15,
+			<!-- special mode for zoomed map: hide big map, loadscene, show small map -->
+			set(layer[map3].enabled, false);
+			tween(layer[map3].alpha, 0.0, 0.15, default,
+				set(layer[map1].enabled, false);
+				set(layer[map2].enabled, false);
+				set(layer[map4].enabled, false);
+				tween(layer[map1].alpha, 0.0, 0.15, default);
+				tween(layer[map2].alpha, 0.0, 0.15, default);
+				tween(layer[map4].alpha, 0.0, 0.15, default);
+				loadscene(%1, null, MERGE, BLEND(1));
+
+				set(layer[map3].onclick, openmap3(); );
+				layer[map3].changeorigin(lefttop,lefttop);
+
+				set(layer[map3].x, 10);
+				set(layer[map3].y, 35%);
+				set(layer[map3].scale, 0.15);
+
+				set(events[sceneload].onloadcomplete,
+					delayedcall(1,
+						tween(layer[map3].alpha, 1.0, 0.5, default, set(layer[map3].enabled, true); );
+						tween(layer[map1].alpha, 1.0, 0.5, default, set(layer[map1].enabled, true); );
+						tween(layer[map2].alpha, 1.0, 0.5, default, set(layer[map2].enabled, true); );
+						tween(layer[map4].alpha, 1.0, 0.5, default, set(layer[map4].enabled, true); );
+					  );
+				  );
+			  );
+		  ,
+			<!-- small map: just load the scene -->
+			loadscene(%1, null, MERGE, BLEND(1));
+		  );
+	</action>
+	
+	<action name="mapspot_loadscene4">
+		tween(layer[tooltip].alpha, 0.0, 0.25, default, set(layer[tooltip].visible,false), copy(layer[tooltip].x,mouse.stagex); copy(layer[tooltip].y,mouse.stagey); );
+		if(layer[map4].scale GT 0.15,
+			<!-- special mode for zoomed map: hide big map, loadscene, show small map -->
+			set(layer[map4].enabled, false);
+			tween(layer[map4].alpha, 0.0, 0.15, default,
+				set(layer[map2].enabled, false);
+				set(layer[map3].enabled, false);
+				set(layer[map1].enabled, false);
+				tween(layer[map2].alpha, 0.0, 0.15, default);
+				tween(layer[map3].alpha, 0.0, 0.15, default);
+				tween(layer[map1].alpha, 0.0, 0.15, default);
+				loadscene(%1, null, MERGE, BLEND(1));
+
+				set(layer[map4].onclick, openmap4(); );
+				layer[map4].changeorigin(lefttop,lefttop);
+
+				set(layer[map4].x, 10);
+				set(layer[map4].y, 1%);
+				set(layer[map4].scale, 0.15);
+
+				set(events[sceneload].onloadcomplete,
+					delayedcall(1,
+						tween(layer[map4].alpha, 1.0, 0.5, default, set(layer[map4].enabled, true); );
+						tween(layer[map2].alpha, 1.0, 0.5, default, set(layer[map2].enabled, true); );
+						tween(layer[map3].alpha, 1.0, 0.5, default, set(layer[map3].enabled, true); );
+						tween(layer[map1].alpha, 1.0, 0.5, default, set(layer[map1].enabled, true); );
+					  );
+				  );
+			  );
+		  ,
+			<!-- small map: just load the scene -->
+			loadscene(%1, null, MERGE, BLEND(1));
+		  );
+	</action>
+	<!-- active spot image (overlays the normal spot) -->
+	<layer name="activespot" url="skin/camicon_red.png" keep="true"
+	       align="lefttop" zorder="4" scale.mobile="2"
+	       />
+
+	<!-- radar layer (overlays the normal spot too, but is behind the activespot image) 0 looks east relative to raw pano-->
+	<layer name="radar" keep="true"
+	       url.flash="%SWFPATH%/plugins/radar.swf"
+	       url.html5="%SWFPATH%/plugins/radar.js"
+	       align="center" zorder="3"
+	       scale.mobile="1.5"
+	       fillalpha="0.5" fillcolor="0xA5A5A5"
+	       linewidth="1.0" linecolor="0x000000" linealpha="0.5"
+	       />
+		   
+	<!-- a button to pause/play the sound 
+	<plugin name="snd" url="%SWFPATH%/plugins/soundonoff.png" align="leftbottom" x="10" y="10" alpha="0.25" scale="0.5" onover="tween(alpha,1);" onout="tween(alpha,0.25);"
+	        crop="0|0|50|50"
+	        onclick="switch(soundinterface.mute); switch(crop, 0|0|50|50, 0|50|50|50);" keep="true"
+	        /> -->
+	
+	<!-- load the soundinterface plugin 
+	<plugin name="soundinterface"
+	        url.flash="%SWFPATH%/plugins/soundinterface.swf"
+	        url.html5="%SWFPATH%/plugins/soundinterface.js"
+	        rootpath=""
+	        preload="true"
+	        keep="true"
+	        /> -->
+	<layer name="copyright" style="text" align="bottomleft" y="0" css="text-align:left; padding: 0px 5px; background-color:rgba(0, 0, 0, 0.3); color:#FFFFFF; font-family:Arial; font-weight:normal; font-size:9px;" html="&#9400; 2018 CIC Alger - conception et réalisation Bestcom" keep="true" />
+
+	
+	<!-- Scenes -->
+	
+	<scene name="scene_Lobby_IMG_6134_Panorama" title="Lobby" onstart="updateradar();"  thumburl="panos/Lobby_IMG_6134_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<!--<events name="lobby audio"
+	        onloadcomplete="stopallsounds();wait(1.0);playsound(lobby, audio/lobby.mp3, 1, null);"
+	        /> -->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, lobby1);
+			set(layer[radar].parent, lobby1);
+			set(layer[radar].heading, -70.0);
+		</action>
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Lobby_IMG_6134_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Lobby_IMG_6134_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="57.510" atv="45.726" linkedscene="scene_lobby_img_6142_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-27.352" atv="1.234" linkedscene="scene_lobby_img_6217_panorama" />
+	
+		   
+	<!-- the text layer -->
+
+	<layer name="lobbytextbox" type="container" align="righttop" x="20" y="20" width="300" height="130" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[lobbytextbox].alpha, 0.0, 0.25, default, set(layer[lobbytextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Lobby" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="90" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:lobbytext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="lobbytext">
+		The main hall can accommodate all types of ceremonies, events, receptions, exhibitions.
+	</data>
+
+	
+	</scene>
+
+	<scene name="scene_Lobby_IMG_6142_Panorama" title="Lobby" onstart="updateradar();" thumburl="panos/Lobby_IMG_6142_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, lobby2);
+			set(layer[radar].parent, lobby2);
+			set(layer[radar].heading, 105.0);
+		</action>
+		<view hlookat="264.330" vlookat="0.436" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Lobby_IMG_6142_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Lobby_IMG_6142_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="57.610" atv="2.927" linkedscene="scene_lobby_img_6134_panorama" />
+	
+
+	</scene>
+
+	<scene name="scene_Lobby_IMG_6217_Panorama" title="Lobby" onstart="updateradar();" thumburl="panos/Lobby_IMG_6217_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, lobby3);
+			set(layer[radar].parent, lobby3);
+			set(layer[radar].heading, 160.0);
+		</action>
+		<view hlookat="71.636" vlookat="-0.313" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Lobby_IMG_6217_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Lobby_IMG_6217_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-96.586" atv="2.236" linkedscene="scene_lobby_img_6134_panorama" />
+		
+
+	</scene>
+
+	
+	<scene name="scene_Auditorium_IMG_5567_Panorama" title="Auditorium Icosium" onstart="updateradar();" thumburl="panos/Auditorium_IMG_5567_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<!--<events name="icosium audio"
+				onloadcomplete="stopallsounds();wait(1.0);playsound(icosium, audio/icosium.mp3, 1, null);"
+	        /> -->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, audito1);
+			set(layer[radar].parent, audito1);
+			set(layer[radar].heading, 110.0);
+		</action>
+		<view hlookat="104.070" vlookat="7.393" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Auditorium_IMG_5567_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Auditorium_IMG_5567_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-75.253" atv="-20.998" linkedscene="scene_auditorium_img_5582_panorama" />
+	
+	<!-- the text layer -->
+
+	<layer name="auditoriumtextbox" type="container" align="righttop" x="20" y="20" width="300" height="300" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[auditoriumtextbox].alpha, 0.0, 0.25, default, set(layer[auditoriumtextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Auditorium Icosium" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="260" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:auditoriumtext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="auditoriumtext">
+		
+	6000 seats capacity
+	[br][br]
+	a modular stage of more than 200 m² for any type of scenography.
+	[br][br]
+	-	A central screen of 18m x 10m [br][br]
+	-	2 side screens of 7,50m x 5m [br][br]
+	-	8 screens of 2m x 1m all around the hall [br][br]
+	In annex, boxes for the artists and the central control cabin.
+
+	</data>
+	
+	</scene>
+
+	<scene name="scene_Auditorium_IMG_5582_Panorama" title="Auditorium Icosium" onstart="updateradar();" thumburl="panos/Auditorium_IMG_5582_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, audito2);
+			set(layer[radar].parent, audito2);
+			set(layer[radar].heading, -145.0);
+		</action>
+		<view hlookat="-0.250" vlookat="7.122" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Auditorium_IMG_5582_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Auditorium_IMG_5582_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-0.250" atv="14.814" linkedscene="scene_auditorium_img_5567_panorama" />
+
+	</scene>
+
+
+	<scene name="scene_Djemila_IMG_6091_Panorama" title="Djemila Hall" onstart="updateradar();" thumburl="panos/Djemila_IMG_6091_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<!--<events name="djemila audio"
+	        onloadcomplete="stopallsounds();wait(1.0);playsound(djemila, audio/djemila.mp3, 1, null);"
+	        /> -->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, djemila2);
+			set(layer[radar].parent, djemila2);
+			set(layer[radar].heading, 238.0);
+		</action>
+		<view hlookat="-15.058" vlookat="-0.418" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Djemila_IMG_6091_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Djemila_IMG_6091_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="-15.058" atv="18.707" linkedscene="scene_djemila_img_2160_panorama" /> -->
+		
+		<!-- the text layer -->
+
+	<layer name="Djemilatextbox" type="container" align="righttop" x="20" y="20" width="300" height="250" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[Djemilatextbox].alpha, 0.0, 0.25, default, set(layer[Djemilatextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Djemila Hall" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="210" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:Djemilatext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="Djemilatext">
+	Djemila hall [br][br]
+-	705 seating capacity as assembly room, with equipments for translation and electronic voting[br][br]
+-	270 seating capacity  as conference room[br][br]
+-	450 seating as banquet room[br][br]
+	</data>
+	
+	</scene>
+	
+	<scene name="scene_Djemila_IMG_2160_Panorama" title="Djemila Hall" onstart="updateradar();" thumburl="panos/Djemila_IMG_2160_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, djemila1);
+			set(layer[radar].parent, djemila1);
+			set(layer[radar].heading, 110.0);
+		</action>
+		<view hlookat="-73.679" vlookat="2.053" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+	<preview url="panos/Djemila_IMG_2160_Panorama.tiles/preview.jpg" />
+
+	<image>
+		<cube url="panos/Djemila_IMG_2160_Panorama.tiles/pano_%s.jpg" />
+	</image>
+	
+	</scene>
+	
+	<scene name="scene_Salle_de_Banquets_Sahara_IMG_6483_Panorama" title="Banquet room Sahara" onstart="updateradar();" thumburl="panos/Salle_de_Banquets_Sahara_IMG_6483_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<!--<events name="salle de banquets audio"
+	        onloadcomplete="stopallsounds();wait(1.0);playsound(salledebanquets, audio/salle de banquets.mp3, 1, null);"
+	        />-->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, banquets);
+			set(layer[radar].parent, banquets);
+			set(layer[radar].heading, -104.0);
+		</action>
+		<view hlookat="14.013" vlookat="-0.627" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_de_Banquets_Sahara_IMG_6483_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_de_Banquets_Sahara_IMG_6483_Panorama.tiles/pano_%s.jpg" />
+		</image>
+	
+	<!-- the text layer -->
+
+	<layer name="salledebanquetstextbox" type="container" align="righttop" x="20" y="20" width="300" height="150" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[salledebanquetstextbox].alpha, 0.0, 0.25, default, set(layer[salledebanquetstextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Banquet room Sahara" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="110" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:salledebanquetstext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="salledebanquetstext">
+		Area : 3300m²[br][br]
+		Capacity : 2500 guests[br][br]
+		Can be divided into 3 separate rooms[br][br]
+
+	</data>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-75.822" atv="5.162" linkedscene="scene_salle_de_banquets_2_img_2861_panorama" />
+	</scene>
+	
+	
+	<scene name="scene_Salle_de_Banquets_2_IMG_2861_Panorama" title="Banquet room Sahara" onstart="updateradar();" thumburl="panos/Salle_de_Banquets_2_IMG_2861_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<action name="updateradar">
+			set(layer[activespot].parent, banquets2);
+			set(layer[radar].parent, banquets2);
+			set(layer[radar].heading, 55.0);
+		</action>
+		
+		<view hlookat="-55.744" vlookat="-0.991" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_de_Banquets_2_IMG_2861_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_de_Banquets_2_IMG_2861_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-56.999" atv="4.021" linkedscene="scene_salle_de_banquets_sahara_img_6483_panorama" />
+
+	</scene>
+
+	
+	<scene name="scene_Salle_de_Conf_IMG_0309_Panorama" title="Press conference room" onstart="updateradar();" thumburl="panos/Salle_de_Conf_IMG_0309_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<!--<events name="salle presse audio"
+	        onloadcomplete="stopallsounds();wait(1.0);playsound(sallepresse, audio/salle presse.mp3, 1, null);"
+	        />-->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, confpresse);
+			set(layer[radar].parent, confpresse);
+			set(layer[radar].heading, -61.0);
+		</action>
+		<view hlookat="-117.5" vlookat="0.0" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_de_Conf_IMG_0309_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_de_Conf_IMG_0309_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		
+	</scene>
+
+	<scene name="scene_Lounge_Presse_IMG_5837_Panorama" title="Press lounge" onstart="updateradar();" thumburl="panos/Lounge_Presse_IMG_5837_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<!--<events name="lounge audio"
+	        onloadcomplete="stopallsounds();wait(1.0);playsound(lounge, audio/lounge presse.mp3, 1, null);"
+	        />-->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, loungepresse);
+			set(layer[radar].parent, loungepresse);
+			set(layer[radar].heading, -130.0);
+		</action>
+		<view hlookat="59.197" vlookat="13.104" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Lounge_Presse_IMG_5837_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Lounge_Presse_IMG_5837_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		
+	</scene>
+
+
+	<scene name="scene_Salle_Polyvalente_2_IMG_2852_Panorama" title="Multipurpose rooms" onstart="updateradar();" thumburl="panos/Salle_Polyvalente_2_IMG_2852_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<!--<events name="sallepoly audio"
+	        onloadcomplete="stopallsounds();wait(1.0);playsound(sallepoly, audio/salles polyvalentes.mp3, 1, null);"
+	        />-->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, sallepoly);
+			set(layer[radar].parent, sallepoly);
+			set(layer[radar].heading, 22.0);
+		</action>
+		<view hlookat="67.978" vlookat="-0.394" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_Polyvalente_2_IMG_2852_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_Polyvalente_2_IMG_2852_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+		<!-- the text layer -->
+
+	<layer name="sallespolytextbox" type="container" align="righttop" x="20" y="20" width="300" height="170" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[sallespolytextbox].alpha, 0.0, 0.25, default, set(layer[sallespolytextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Multipurpose rooms" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="130" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:sallespolytext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="sallespolytext">
+	-	06 multipurpose rooms with a seatings capacity from 172 to 320 seats[br][br]
+	-	Equipped with facilities for translation, data show, cameras and sound system
+
+	</data>
+	
+	</scene>
+
+	<scene name="scene_Salle_Polyvalente_3_IMG_2886_Panorama" title="Multipurpose rooms" onstart="updateradar();" thumburl="panos/Salle_Polyvalente_3_IMG_2886_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, sallepoly2);
+			set(layer[radar].parent, sallepoly2);
+			set(layer[radar].heading, 85.0);
+		</action>
+		<view hlookat="4.350" vlookat="0.048" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_Polyvalente_3_IMG_2886_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_Polyvalente_3_IMG_2886_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Salle_Polyvalente_4_IMG_2895_Panorama" title="Multipurpose rooms" onstart="updateradar();" thumburl="panos/Salle_Polyvalente_4_IMG_2895_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, sallepoly3);
+			set(layer[radar].parent, sallepoly3);
+			set(layer[radar].heading, 24.0);
+		</action>
+		<view hlookat="66.193" vlookat="-0.301" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_Polyvalente_4_IMG_2895_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_Polyvalente_4_IMG_2895_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Salle_Polyvalente_5_IMG_2903_Panorama" title="Multipurpose rooms" onstart="updateradar();" thumburl="panos/Salle_Polyvalente_5_IMG_2903_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, sallepoly4);
+			set(layer[radar].parent, sallepoly4);
+			set(layer[radar].heading, 24.0);
+		</action>
+		<view hlookat="64.194" vlookat="-0.141" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_Polyvalente_5_IMG_2903_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_Polyvalente_5_IMG_2903_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Salle_Polyvalente_6_IMG_2918_Panorama" title="Multipurpose rooms" onstart="updateradar();" thumburl="panos/Salle_Polyvalente_6_IMG_2918_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, sallepoly5);
+			set(layer[radar].parent, sallepoly5);
+			set(layer[radar].heading, 86.0);
+		</action>
+		<view hlookat="4.497" vlookat="0.209" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_Polyvalente_6_IMG_2918_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_Polyvalente_6_IMG_2918_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Bureaux_D__l__gations_IMG_5891_Panorama" title="Delegations offices" onstart="updateradar();" thumburl="panos/Bureaux_D__l__gations_IMG_5891_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<!--<events name="bureaux delegations"
+	        onloadcomplete="stopallsounds();wait(1.0);playsound(burdelegation, audio/bureaux delegations.mp3, 1, null);"
+	        />-->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, burdelegation1);
+			set(layer[radar].parent, burdelegation1);
+			set(layer[radar].heading, -160.0);
+		</action>
+		<view hlookat="44.691" vlookat="0.182" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Bureaux_D__l__gations_IMG_5891_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Bureaux_D__l__gations_IMG_5891_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="75.046" atv="20.878" linkedscene="scene_bureaux_d__l__gations_img_5879_panorama" />
+	
+	<!-- the text layer -->
+
+	<layer name="bureauxtextbox" type="container" align="righttop" x="20" y="20" width="300" height="120" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[bureauxtextbox].alpha, 0.0, 0.25, default, set(layer[bureauxtextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Delegations offices" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="80" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:bureauxtext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="bureauxtext">
+		61 offices are available to delegation for their meetings 
+	</data>
+	
+	</scene>
+
+	<scene name="scene_Bureaux_D__l__gations_IMG_5879_Panorama" title="Delegations offices" onstart="updateradar();" thumburl="panos/Bureaux_D__l__gations_IMG_5879_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, burdelegation2);
+			set(layer[radar].parent, burdelegation2);
+			set(layer[radar].heading, -160.0);
+		</action>
+		<view hlookat="-19.586" vlookat="-0.134" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Bureaux_D__l__gations_IMG_5879_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Bureaux_D__l__gations_IMG_5879_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="72.772" atv="15.304" linkedscene="scene_bureaux_d__l__gations_img_5872_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-109.301" atv="21.350" linkedscene="scene_bureaux_d__l__gations_img_5891_panorama" />
+
+	</scene>
+		
+		<scene name="scene_Bureaux_D__l__gations_IMG_5872_Panorama" title="Delegations offices" onstart="updateradar();" thumburl="panos/Bureaux_D__l__gations_IMG_5872_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, burdelegation3);
+			set(layer[radar].parent, burdelegation3);
+			set(layer[radar].heading, -194.0);
+		</action>
+		<view hlookat="89.674" vlookat="1.619" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Bureaux_D__l__gations_IMG_5872_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Bureaux_D__l__gations_IMG_5872_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-86.766" atv="13.682" linkedscene="scene_bureaux_d__l__gations_img_5879_panorama" />
+
+	</scene>
+	
+	
+	<scene name="scene_Oasis_IMG_0062_Panorama" title="Oasis restaurant" onstart="updateradar();" thumburl="panos/Oasis_IMG_0062_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<!--<events name="oasis"
+	        onloadcomplete="stopallsounds();wait(1.0);playsound(oasis, audio/oasis.mp3, 1, null);"
+	        />-->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, oasis5);
+			set(layer[radar].parent, oasis5);
+			set(layer[radar].heading, -180.0);
+		</action>
+		<view hlookat="-118.482" vlookat="0.339" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Oasis_IMG_0062_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Oasis_IMG_0062_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		
+		<!-- the text layer -->
+
+	<layer name="oasistextbox" type="container" align="righttop" x="20" y="20" width="300" height="130" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[oasistextbox].alpha, 0.0, 0.25, default, set(layer[oasistextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Oasis Restaurant" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="90" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:oasistext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="oasistext">
+	Self service with a capacity of 740 guests [br][br]
+	Area : 1400m²
+
+	</data>
+	
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-133.097" atv="6.133" linkedscene="scene_oasis_img_0035_panorama" />
+
+	</scene>
+	
+	<scene name="scene_Oasis_IMG_0035_Panorama" title="Oasis restaurant" onstart="updateradar();" thumburl="panos/Oasis_IMG_0035_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, oasis4);
+			set(layer[radar].parent, oasis4);
+			set(layer[radar].heading, -125.0);
+		</action>
+		<view hlookat="125.280" vlookat="1.049" fovtype="MFOV" fov="98.471" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Oasis_IMG_0035_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Oasis_IMG_0035_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="125.547" atv="1.497" linkedscene="scene_oasis_img_5643_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-26.498" atv="3.582" linkedscene="scene_oasis_img_0062_panorama" />
+
+	</scene>
+
+	<scene name="scene_Oasis_IMG_5643_Panorama" title="Oasis restaurant" onstart="updateradar();" thumburl="panos/Oasis_IMG_5643_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, oasis1);
+			set(layer[radar].parent, oasis1);
+			set(layer[radar].heading, -5.0);
+		</action>
+		<view hlookat="-222.767" vlookat="0.273" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Oasis_IMG_5643_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Oasis_IMG_5643_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		
+		
+	
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-179.670" atv="3.504" linkedscene="scene_oasis_img_0035_panorama" />
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="112.698" atv="0.355" linkedscene="scene_oasis_img_5685_panorama" />
+
+	</scene>
+
+	<scene name="scene_Oasis_IMG_5685_Panorama" title="Oasis café" onstart="updateradar();" thumburl="panos/Oasis_IMG_5685_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, oasis3);
+			set(layer[radar].parent, oasis3);
+			set(layer[radar].heading, -170.0);
+		</action>
+		<view hlookat="-119.122" vlookat="-0.190" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Oasis_IMG_5685_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Oasis_IMG_5685_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="122.338" atv="0.992" linkedscene="scene_oasis_img_5643_panorama" />
+		
+
+	</scene>
+
+	<scene name="scene_Cherchell_IMG_0470_Panorama" title="Cherchell Restaurant" onstart="updateradar();" thumburl="panos/Cherchell_IMG_0470_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, cherchell2);
+			set(layer[radar].parent, cherchell2);
+			set(layer[radar].heading, 40.0);
+		</action>
+		<view hlookat="65.196" vlookat="0.274" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Cherchell_IMG_0470_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Cherchell_IMG_0470_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		
+		<!-- the text layer -->
+
+	<layer name="cherchelltextbox" type="container" align="righttop" x="20" y="20" width="300" height="130" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[cherchelltextbox].alpha, 0.0, 0.25, default, set(layer[cherchelltextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Cherchell Restaurant" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="90" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:cherchelltext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="cherchelltext">
+	Cherchell restaurant on 2 levels with a capacity of 392 guests
+
+	</data>
+		
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="30.732" atv="6.416" linkedscene="scene_cherchell_img_0494_panorama" />
+
+	</scene>
+
+	<scene name="scene_Cherchell_IMG_0494_Panorama" title="Cherchell Restaurant" onstart="updateradar();" thumburl="panos/Cherchell_IMG_0494_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, cherchell1);
+			set(layer[radar].parent, cherchell1);
+			set(layer[radar].heading, 40.0);
+		</action>
+		<view hlookat="-142.967" vlookat="0.304" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Cherchell_IMG_0494_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Cherchell_IMG_0494_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-158.057" atv="2.139" linkedscene="scene_cherchell_img_0470_panorama" />
+
+	</scene>
+
+	<scene name="scene_Crepuscule_IMG_0229_Panorama" title="Crépuscule restaurant" onstart="updateradar();" thumburl="panos/Crepuscule_IMG_0229_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, crepusculebar);
+			set(layer[radar].parent, crepusculebar);
+			set(layer[radar].heading, 100.0);
+		</action>
+		<view hlookat="79.145" vlookat="2.017" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Crepuscule_IMG_0229_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Crepuscule_IMG_0229_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		
+		<!-- the text layer -->
+
+	<layer name="crepusculetextbox" type="container" align="righttop" x="20" y="20" width="300" height="130" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[crepusculetextbox].alpha, 0.0, 0.25, default, set(layer[crepusculetextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Crépuscule restaurant" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="90" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:crepusculetext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="crepusculetext">
+	Restaurant Crepuscule with a capacity of 102 guests with terrace and lounge cafeteria [br][br] 
+	
+	</data>
+		
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="71.851" atv="3.971" linkedscene="scene_crepuscule_img_0208_panorama" />
+
+	</scene>
+	
+	<scene name="scene_Crepuscule_IMG_0112_Panorama" title="Crépuscule restaurant" onstart="updateradar();" thumburl="panos/Crepuscule_IMG_0112_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, crepusculerec);
+			set(layer[radar].parent, crepusculerec);
+			set(layer[radar].heading, 220.0);
+		</action>
+		<view hlookat="62.907" vlookat="0.020" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Crepuscule_IMG_0112_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Crepuscule_IMG_0112_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="104.284" atv="5.990" linkedscene="scene_crepuscule_img_0119_panorama" />
+
+	</scene>
+
+	<scene name="scene_Crepuscule_IMG_0119_Panorama" title="Crépuscule restaurant" onstart="updateradar();" thumburl="panos/Crepuscule_IMG_0119_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, crepusculecer);
+			set(layer[radar].parent, crepusculecer);
+			set(layer[radar].heading, 95.0);
+		</action>
+		<view hlookat="-105.258" vlookat="-0.220" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Crepuscule_IMG_0119_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Crepuscule_IMG_0119_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="63.344" atv="7.723" linkedscene="scene_crepuscule_img_0112_panorama" />
+
+	</scene>
+	
+
+	<scene name="scene_Crepuscule_IMG_0208_Panorama" title="Crépuscule restaurant" onstart="updateradar();" thumburl="panos/Crepuscule_IMG_0208_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, crepuscule);
+			set(layer[radar].parent, crepuscule);
+			set(layer[radar].heading, 20.0);
+		</action>
+		<view hlookat="-140.035" vlookat="-0.147" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Crepuscule_IMG_0208_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Crepuscule_IMG_0208_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-45.390" atv="4.573" linkedscene="scene_crepuscule_img_0229_panorama" />
+
+	</scene>
+
+	
+	<scene name="scene_La_Rose_des_Sables_IMG_5751_Panorama" title="La Rose des Sables café" onstart="updateradar();" thumburl="panos/La_Rose_des_Sables_IMG_5751_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, rosesables);
+			set(layer[radar].parent, rosesables);
+			set(layer[radar].heading, 135.0);
+		</action>
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/La_Rose_des_Sables_IMG_5751_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/La_Rose_des_Sables_IMG_5751_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+	
+		<scene name="scene_Caf___Ambre_IMG_6021_Panorama" title="Ambre café" onstart="updateradar();" thumburl="panos/Caf___Ambre_IMG_6021_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, ambre);
+			set(layer[radar].parent, ambre);
+			set(layer[radar].heading, 190.0);
+		</action>
+		<view hlookat="-121.906" vlookat="-0.545" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Caf___Ambre_IMG_6021_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Caf___Ambre_IMG_6021_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Caf___AzulIMG_6629_Panorama" title="Azul café" onstart="updateradar();" thumburl="panos/Caf___AzulIMG_6629_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, azul);
+			set(layer[radar].parent, azul);
+			set(layer[radar].heading, -80.0);
+		</action>
+		<view hlookat="-100.314" vlookat="0.455" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Caf___AzulIMG_6629_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Caf___AzulIMG_6629_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_plaza_IMG_0349_Panorama" title="Plaza café" onstart="updateradar();" thumburl="panos/plaza_IMG_0349_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, plaza);
+			set(layer[radar].parent, plaza);
+			set(layer[radar].heading, -65.0);
+		</action>
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/plaza_IMG_0349_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/plaza_IMG_0349_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-119.616" atv="2.114" linkedscene="scene_plaza_img_0409_panorama" />
+
+	</scene>
+
+	<scene name="scene_plaza_IMG_0409_Panorama" title="Plaza café" onstart="updateradar();" thumburl="panos/plaza_IMG_0409_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, plaza2);
+			set(layer[radar].parent, plaza2);
+			set(layer[radar].heading, -197.0);
+		</action>
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/plaza_IMG_0409_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/plaza_IMG_0409_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="169.136" atv="2.291" linkedscene="scene_plaza_img_0349_panorama" />
+
+	</scene>
+
+
+	<scene name="scene_Hall_d_Exposition_IMG_6814_Panorama" title="Exhibition halls" onstart="updateradar();" thumburl="panos/Hall_d_Exposition_IMG_6814_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+			
+		<!--<events name="hallexpo audio"
+				onloadcomplete="stopallsounds();wait(1.0);playsound(hallexpo, audio/hall expo.mp3, 1, null);"
+	        />-->
+		
+		<action name="updateradar">
+			set(layer[activespot].parent, hallexpo);
+			set(layer[radar].parent, hallexpo);
+			set(layer[radar].heading, -170.0);
+		</action>
+		<view hlookat="171.848" vlookat="0.086" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Hall_d_Exposition_IMG_6814_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Hall_d_Exposition_IMG_6814_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<!-- <hotspot name="spot1" style="skin_hotspotstyle" ath="165.391" atv="6.398" linkedscene="scene_hall_d_exposition_img_6821_panorama" /> -->
+	
+	<!-- the text layer -->
+
+	<layer name="hallexpotextbox" type="container" align="righttop" x="20" y="20" width="300" height="130" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[hallexpotextbox].alpha, 0.0, 0.25, default, set(layer[hallexpotextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="Exhibition halls" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="90" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:hallexpotext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+		<data name="hallexpotext">
+		Area : 15.000m²[br][br]
+		Spaces adapted to all types of configurations with independent access
+
+		</data>
+	
+	</scene>
+
+	
+		
+		<scene name="scene_Hall_Vip_IMG_9887_Panorama" title="VIP Hall" onstart="updateradar();" thumburl="panos/Hall_Vip_IMG_9887_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Hallvip);
+			set(layer[radar].parent, Hallvip);
+			set(layer[radar].heading, -24.0);
+		</action>
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Hall_Vip_IMG_9887_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Hall_Vip_IMG_9887_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="89.891" atv="4.086" linkedscene="scene_salon_vip_img_5377_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-103.113" atv="1.786" linkedscene="scene_salon_blanc_img_5391_panorama" />
+
+	</scene>
+
+	<scene name="scene_Salon_Vip_IMG_5377_Panorama" title="VIP Lounge" onstart="updateradar();" thumburl="panos/Salon_Vip_IMG_5377_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Salonvip1);
+			set(layer[radar].parent, Salonvip1);
+			set(layer[radar].heading, -99.0);
+		</action>
+		<view hlookat="165.270" vlookat="-0.041" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salon_Vip_IMG_5377_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salon_Vip_IMG_5377_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-14.597" atv="3.309" linkedscene="scene_hall_vip_img_9887_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="165.520" atv="2.964" linkedscene="scene_salon_vip_img_5292_panorama" />
+
+	</scene>
+	
+		<scene name="scene_Salon_Vip_IMG_5292_Panorama" title="VIP Lounge" onstart="updateradar();" thumburl="panos/Salon_Vip_IMG_5292_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Salonvip2);
+			set(layer[radar].parent, Salonvip2);
+			set(layer[radar].heading, 82.0);
+		</action>
+		<view hlookat="-16.103" vlookat="-0.191" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salon_Vip_IMG_5292_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salon_Vip_IMG_5292_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="163.515" atv="0.676" linkedscene="scene_salon_vip_img_5377_panorama" />
+
+	</scene>
+
+	<scene name="scene_Salon_Blanc_IMG_5391_Panorama" title="Formal lounge" onstart="updateradar();" thumburl="panos/Salon_Blanc_IMG_5391_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Salonblanc);
+			set(layer[radar].parent, Salonblanc);
+			set(layer[radar].heading, 104.0);
+		</action>
+		<view hlookat="-14.200" vlookat="0.420" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salon_Blanc_IMG_5391_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salon_Blanc_IMG_5391_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-13.798" atv="4.716" linkedscene="scene_hall_vip_img_9887_panorama" />
+
+	</scene>
+
+	<scene name="scene_Salle_Triangulaire_IMG_5443_Panorama" title="Head of states summit great room" onstart="updateradar();" thumburl="panos/Salle_Triangulaire_IMG_5443_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Salletri);
+			set(layer[radar].parent, Salletri);
+			set(layer[radar].heading, 47.0);
+		</action>
+		<view hlookat="-17.990" vlookat="1.022" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_Triangulaire_IMG_5443_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_Triangulaire_IMG_5443_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Resto_Vip_IMG_0250_Panorama" title="VIP Restaurant" onstart="updateradar();" thumburl="panos/Resto_Vip_IMG_0250_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Restovip);
+			set(layer[radar].parent, Restovip);
+			set(layer[radar].heading, 85.0);
+		</action>
+		<view hlookat="5.019" vlookat="-0.105" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Resto_Vip_IMG_0250_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Resto_Vip_IMG_0250_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		
+		<!-- the text layer -->
+
+	<layer name="restoviptextbox" type="container" align="righttop" x="20" y="20" width="300" height="130" bgcolor="0x333333" bgalpha="0.7" bgcapture="true" 
+		onclick="tween(layer[restoviptextbox].alpha, 0.0, 0.25, default, set(layer[restoviptextbox].visible,false) );" >
+		<layer name="title" style="text" align="top" y="5" width="100%" css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:14px;" html="VIP Restaurant" />
+		<layer name="textarea" type="container" align="lefttop" x="10" y="30" width="280" height="90" bgcolor="0xFFFFFF" bgalpha="1.0" maskchildren="true">
+			<layer name="text" style="text" enabled="true" align="lefttop" x="0" y="0" width="100%" autoheight="true" css="text-align:left; color:#000000; font-family:Arial; font-size:15px;" html="data:restoviptext" ondown="draglayer_vertically_within_parent();" />
+		</layer>
+	</layer>
+
+	<data name="restoviptext">
+	VIP restaurant accommodate up to 230 guests[br][br] 
+	
+	</data>
+
+	</scene>
+
+	
+	<scene name="scene_Salle_Reunion_Vip_IMG_5398_Panorama" title="Meeting rooms" onstart="updateradar();" thumburl="panos/Salle_Reunion_Vip_IMG_5398_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Sallereunionvip2);
+			set(layer[radar].parent, Sallereunionvip2);
+			set(layer[radar].heading, 285.0);
+		</action>
+		<view hlookat="-14.849" vlookat="1.150" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_Reunion_Vip_IMG_5398_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_Reunion_Vip_IMG_5398_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Salle_Reunion_Vip_IMG_5520_Panorama" title="Meeting rooms" onstart="updateradar();" thumburl="panos/Salle_Reunion_Vip_IMG_5520_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Sallereunionvip);
+			set(layer[radar].parent, Sallereunionvip);
+			set(layer[radar].heading, 47.0);
+		</action>
+		<view hlookat="-130.735" vlookat="0.941" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Salle_Reunion_Vip_IMG_5520_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Salle_Reunion_Vip_IMG_5520_Panorama.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Suite_IMG_2609_Panorama" title="Bedrooms suites" onstart="updateradar();" thumburl="panos/Suite_IMG_2609_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Suite1);
+			set(layer[radar].parent, Suite1);
+			set(layer[radar].heading, 103.0);
+		</action>
+		<view hlookat="-162.143" vlookat="1.589" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Suite_IMG_2609_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Suite_IMG_2609_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-4.318" atv="18.134" linkedscene="scene_suite_img_2600_panorama" />
+
+	</scene>
+
+	<scene name="scene_Suite_IMG_2600_Panorama" title="Bedrooms suites" onstart="updateradar();" thumburl="panos/Suite_IMG_2600_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Suite2);
+			set(layer[radar].parent, Suite2);
+			set(layer[radar].heading, 87.0);
+		</action>
+		<view hlookat="597.801" vlookat="7.226" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Suite_IMG_2600_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Suite_IMG_2600_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-174.290" atv="17.348" linkedscene="scene_suite_img_2609_panorama" />
+
+	</scene>
+
+	<scene name="scene_Suite_IMG_2626_Panorama" title="Bedrooms suites" onstart="updateradar();" thumburl="panos/Suite_IMG_2626_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Suite3);
+			set(layer[radar].parent, Suite3);
+			set(layer[radar].heading, -14.0);
+		</action>
+		<view hlookat="83.566" vlookat="9.582" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Suite_IMG_2626_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Suite_IMG_2626_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="147.796" atv="26.261" linkedscene="scene_suite_img_2648_panorama" />	
+
+	</scene>
+
+	<scene name="scene_Suite_IMG_2648_Panorama" title="Bedrooms suites" onstart="updateradar();" thumburl="panos/Suite_IMG_2648_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+		<action name="updateradar">
+			set(layer[activespot].parent, Suite4);
+			set(layer[radar].parent, Suite4);
+			set(layer[radar].heading, -31.0);
+		</action>
+		<view hlookat="-294.403" vlookat="8.976" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Suite_IMG_2648_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Suite_IMG_2648_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="114.771" atv="7.647" linkedscene="scene_suite_img_2626_panorama" />
+
+	</scene>
+
+
+	
+</krpano>

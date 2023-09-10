@@ -1,0 +1,70 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.bg {
+    background-color: #fffae0;
+    background-image: url(skin/bat.jpg);
+    background-position: top;
+    background-size: cover;
+    height: 100vh;
+}
+
+.center{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+ul{
+    padding: 0px;
+    margin: 0px;
+   
+}
+
+ul li{
+    list-style: none;
+    border: 2px solid transparent;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 30px;
+    border-radius: 15px;
+    font-family: arial;
+}
+
+ul li a {
+    text-decoration: none;
+    padding: 15px 35px;
+    display: block;
+    text-align: center;  
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out; color: black;
+    border: 2px solid rgba(0,0,0,1);
+    background-color:#fffae0;
+}
+
+ul li:hover a{
+    background-color:black;
+    color:white;
+}
+
+#titre {
+    text-align: left;  
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'MTCORSVA';
+}
+
+@font-face{
+    font-family: "MTCORSVA";
+    src: url("skin/MTCORSVA.ttf");
+}
+
+
+
