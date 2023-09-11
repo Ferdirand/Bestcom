@@ -1,7 +1,32 @@
 ﻿<krpano version="1.21" title="معرض الذاكرة" idletime="75.0" onstart="startup();">
 
 	<include url="skin/vtourskinar.xml" />
-	
+	<action name="add_back_buttona">
+		
+		addlayer(backbutton);
+		layer[backbutton].loadstyle('button');
+		set(layer[backbutton].style, null);
+		set(layer[backbutton].keep, true);
+		set(layer[backbutton].html, 'خروج');
+		set(layer[backbutton].align, 'righttop');
+		set(layer[backbutton].x, 32);
+		set(layer[backbutton].y, 32);
+		set(layer[backbutton].width, 70);
+		set(layer[backbutton].height, 50);
+		ifnot(device.ie, set(layer[backbutton].roundedge, 20); );
+		set(layer[backbutton].zorder, 99999);
+		set(layer[backbutton].alpha, 0.0);
+		set(layer[backbutton].onloaded, delayedcall(1.0,tween(alpha,0.7)); );
+		set(layer[backbutton].ondown, 'openurl(../index.html,_self);' );
+	</action>
+	<style name="button"
+		url="%SWFPATH%/plugins/textfield.swf"
+		children="false"
+		css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:16px;"
+		vcenter="true"
+		backgroundcolor="0x000000" backgroundalpha="0.667" roundedge="10" border="false"
+		shadow="0.1" shadowrange="8" shadowcolor="0xFFFFFF"
+		/>
 	<!--
 	<plugin name="editor" url="%SWFPATH%/plugins/editor.swf" keep="true" />
 	<plugin name="options" url="%SWFPATH%/plugins/options.swf" keep="true" />
