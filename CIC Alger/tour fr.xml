@@ -25,7 +25,7 @@
 		set(layer[backbutton].onloaded, delayedcall(1.0,tween(alpha,0.7)); );
 		set(layer[backbutton].ondown, 'openurl(../index.html,_self);' );
 	</action>
-	
+
 	<style name="button"
 		url="%SWFPATH%/plugins/textfield.swf"
 		children="false"
