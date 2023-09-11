@@ -32,6 +32,7 @@
 		set(layer[backbutton].ondown, 'openurl(../index.html,_self);' );
 	</action>
 	<style name="button"
+		type="text"
 		children="false"
 		css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:16px;"
 		vcenter="true"
