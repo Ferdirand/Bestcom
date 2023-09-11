@@ -1,0 +1,37 @@
+<krpano version="1.16" onstart="set(fullscreen,true);">
+
+	<preview url="images/white.jpg" />
+
+
+	<layer name="white" url="images/white.jpg" align="center" x="0" y="0" width="100%" height="100%" enabled="true" onclick="hideintroimage(); " />
+
+
+		   
+
+			
+
+		<!--	
+	<events name="panoevents"
+	        onxmlcomplete="delayedcall(introimage, 3.0, if(layer[introimage], hideintroimage() ); ); set(events[panoevents].onxmlcomplete,null);"
+	        onremovepano="stopdelayedcall(introimage);"
+	        /> -->
+	
+	
+	<layer name="introimage"
+			width="36%" height="28%"
+			zorder="2" 
+	       url="images/intro.png"
+	       align="center"
+	       onloaded="set(alpha,0); tween(alpha,1.0);"
+	       ondown="hideintroimage();"
+	       />
+	
+	<action name="hideintroimage">
+		if(layer[introimage].enabled,
+			set(layer[introimage].enabled,false);
+			tween(layer[introimage].alpha, 0.0, 0.5, default, removelayer(introimage));
+			delayedcall(1.0,loadpano('intro.xml',null, MERGE, BLEND(1)));
+		  );
+	</action>
+
+</krpano>

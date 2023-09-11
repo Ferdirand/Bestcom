@@ -1,0 +1,1927 @@
+﻿<krpano version="1.21" title="معرض الذاكرة" idletime="75.0" onstart="startup();">
+
+	<include url="skin/vtourskinar.xml" />
+	
+	<!--
+	<plugin name="editor" url="%SWFPATH%/plugins/editor.swf" keep="true" />
+	<plugin name="options" url="%SWFPATH%/plugins/options.swf" keep="true" />
+	<plugin name="target" url="target.png" align="center" keep="true" /> -->
+	
+	<autorotate enabled="true"
+            waittime="5"
+            speed="5.0"
+            />
+	
+	<!-- moveto to drag-->
+	<control mousetype="drag2d" keycodesin="" keycodesout="" />
+	
+	<!-- include hotspot styles-->
+	<include url="plugins/hotspotstyles.xml" />
+	<!-- include flyout hotspot-->
+	<include url="plugins/flyout.xml" />
+
+	<!-- set skin settings: bingmaps? gyro? thumbnail controlling? tooltips? -->
+	<skin_settings bingmaps="false"
+	               bingmaps_key=""
+	               bingmaps_zoombuttons="false"
+	               gyro="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               controlbar_offset="20"
+	               />
+
+	<!-- set optional skin logo url -->
+	<layer name="skin_logo" url="" scale="0.25" opened_onclick="openurl('...',_blank);" />
+
+
+	<action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE, BLEND(1));
+	</action>
+
+	
+	
+	
+	<!-- <scene name="scene_1_IMG_6005_Panorama" title="1_IMG_6005 Panorama" onstart="" thumburl="panos/1_IMG_6005_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-25.446" vlookat="4.829" fovtype="MFOV" fov="120.000" maxpixelzoom="1.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/1_IMG_6005_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4534" tiledimageheight="4534">
+				<cube url="panos/1_IMG_6005_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2267" tiledimageheight="2267">
+				<cube url="panos/1_IMG_6005_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1134" tiledimageheight="1134">
+				<cube url="panos/1_IMG_6005_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/1_IMG_6005_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/1_IMG_6005_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		place your scene hotspots here 
+		<hotspot name="spot1" style="skin_hotspotstyle" 
+		ath="-23.919579" atv="9.821347" distorted="true" rx="-48.5" ry="0.75" rz="-0.007252" edge="top" oy="0" width="128" height="112" scale="0.64386" 
+		linkedscene="scene_a_img_6223_panorama" />
+
+	</scene> -->
+
+	<scene name="scene_1_IMG_6899_Panorama" title="تاريخ الجزائر من 1830 إلى 1962" onstart="" thumburl="panos/1_IMG_6899_Panorama.tiles/thumb.jpg" lat="36.73480333" lng="3.02136389" heading="0.0">
+
+		<view hlookat="-183.813" vlookat="0.025" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/1_IMG_6899_Panorama.tiles/preview.jpg" />
+		
+		<lensflareset name="DEFAULT" url="%SWFPATH%/plugins/krpano_default_flares.jpg" />	
+		
+		<lensflare name="lf0" set="DEFAULT" ath="177.681204" atv="-61.221292" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4343" tiledimageheight="4343">
+				<cube url="panos/1_IMG_6899_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2172" tiledimageheight="2172">
+				<cube url="panos/1_IMG_6899_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/1_IMG_6899_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/1_IMG_6899_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/1_IMG_6899_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle2" ath="176.428849" atv="16.927358" distorted="true" rx="-42.0" ry="-5.5" rz="-3.791058" edge="top" oy="0" width="128" height="112" scale="0.639687"   linkedscene="scene_2_IMG_7102_Panorama" />
+
+	</scene>
+	
+	<scene name="scene_2_IMG_7102_Panorama" title="الإستقبال" onstart="" thumburl="panos/2_IMG_7102_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/2_IMG_7102_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4354" tiledimageheight="4354">
+				<cube url="panos/2_IMG_7102_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2177" tiledimageheight="2177">
+				<cube url="panos/2_IMG_7102_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1089" tiledimageheight="1089">
+				<cube url="panos/2_IMG_7102_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/2_IMG_7102_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/2_IMG_7102_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="239.379982" atv="37.874833" distorted="true" rx="-28.5" ry="57.0" rz="66.133121" edge="top" oy="0" width="128" height="112" scale="1.244695"  linkedscene="scene_1_IMG_6899_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-17.018867" atv="29.783725" distorted="true" rx="0" ry="0" rz="-1.330528" edge="top" oy="0" width="128" height="112" scale="0.947458"  linkedscene="scene_2_IMG_7094_Panorama" />
+
+	</scene>
+	
+	<scene name="scene_2_IMG_7094_Panorama" title="الإستقبال" onstart="" thumburl="panos/2_IMG_7094_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="22.597" vlookat="2.669" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/2_IMG_7094_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4362" tiledimageheight="4362">
+				<cube url="panos/2_IMG_7094_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2181" tiledimageheight="2181">
+				<cube url="panos/2_IMG_7094_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1091" tiledimageheight="1091">
+				<cube url="panos/2_IMG_7094_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/2_IMG_7094_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/2_IMG_7094_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="139.068019" atv="32.620868" distorted="true" rx="-24.0" ry="33.5" rz="15.309754" edge="top" oy="0" width="128" height="112"  linkedscene="scene_2_IMG_7102_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="22.047632" atv="25.627542" distorted="true" rx="-24.75" ry="-42.0" rz="-19.730741" edge="top" oy="0" width="128" height="112" scale="0.920389"   linkedscene="scene_2_IMG_7087_Panorama" />
+
+	</scene>
+	
+	<scene name="scene_2_IMG_7087_Panorama" title="تقسيم أجنحة المعرض" onstart="" thumburl="panos/2_IMG_7087_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-44.658" vlookat="0.809" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/2_IMG_7087_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4354" tiledimageheight="4354">
+				<cube url="panos/2_IMG_7087_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2177" tiledimageheight="2177">
+				<cube url="panos/2_IMG_7087_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1089" tiledimageheight="1089">
+				<cube url="panos/2_IMG_7087_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/2_IMG_7087_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/2_IMG_7087_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="106.331647" atv="33.053722" distorted="true" rx="-22.0" ry="-25.0" rz="-19.775366" edge="top" oy="0" width="128" height="112" scale="1.134211"  linkedscene="scene_2_IMG_7094_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-58.599413" atv="27.377291" distorted="true" rx="-42.75" ry="-42.75" rz="-43.927003" edge="top" oy="0" width="128" height="112" scale="1.117333"  linkedscene="scene_Z_IMG_7079_Panorama" />
+
+	</scene>
+	
+	<scene name="scene_Z_IMG_7079_Panorama" title="رؤساء الدولة الجزائرية" onstart="" thumburl="panos/Z_IMG_7079_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-50.110" vlookat="-0.818" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Z_IMG_7079_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4376" tiledimageheight="4376">
+				<cube url="panos/Z_IMG_7079_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2188" tiledimageheight="2188">
+				<cube url="panos/Z_IMG_7079_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1094" tiledimageheight="1094">
+				<cube url="panos/Z_IMG_7079_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/Z_IMG_7079_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/Z_IMG_7079_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="39.649469" atv="24.726357" distorted="true" rx="0.25" ry="9.25" rz="-5.1564" edge="top" oy="0" width="128" height="112" scale="0.973374"  linkedscene="scene_2_IMG_7087_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-56.012359" atv="20.626154" distorted="true" rx="-6.75" ry="8.0" rz="2.189619" edge="top" oy="0" width="128" height="112"  linkedscene="scene_Z_IMG_6909_Panorama" />
+
+	</scene>
+	
+	<scene name="scene_Z_IMG_6909_Panorama" title="رؤساء الدولة الجزائرية" onstart="" thumburl="panos/Z_IMG_6909_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-52.964" vlookat="1.282" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Z_IMG_6909_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4347" tiledimageheight="4347">
+				<cube url="panos/Z_IMG_6909_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2174" tiledimageheight="2174">
+				<cube url="panos/Z_IMG_6909_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Z_IMG_6909_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/Z_IMG_6909_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/Z_IMG_6909_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="115.881" atv="31.425" linkedscene="scene_Z_IMG_7079_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-58.836744" atv="22.624057" distorted="true" rx="-0.5" ry="9.0" rz="1.445564" edge="top" oy="0" width="128" height="112"  linkedscene="scene_Z_IMG_6916_Panorama" />
+
+	</scene>
+
+	<scene name="scene_Z_IMG_6916_Panorama" title="رؤساء الدولة الجزائرية" onstart="" thumburl="panos/Z_IMG_6916_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="132.703" vlookat="0.495" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Z_IMG_6916_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4337" tiledimageheight="4337">
+				<cube url="panos/Z_IMG_6916_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2169" tiledimageheight="2169">
+				<cube url="panos/Z_IMG_6916_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Z_IMG_6916_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/Z_IMG_6916_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/Z_IMG_6916_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-53.009" atv="29.666" linkedscene="scene_Z_IMG_6909_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="126.810897" atv="21.879778" distorted="true" rx="-3.5" ry="5.75" rz="1.936726" edge="top" oy="0" width="128" height="112"  linkedscene="scene_Z_IMG_6922_Panorama" />
+
+	</scene>
+
+	<scene name="scene_Z_IMG_6922_Panorama" title="رؤساء الدولة الجزائرية" onstart="" thumburl="panos/Z_IMG_6922_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-54.885" vlookat="0.533" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Z_IMG_6922_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4346" tiledimageheight="4346">
+				<cube url="panos/Z_IMG_6922_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2173" tiledimageheight="2173">
+				<cube url="panos/Z_IMG_6922_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Z_IMG_6922_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/Z_IMG_6922_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/Z_IMG_6922_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="120.194" atv="19.021" linkedscene="scene_Z_IMG_6916_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-60.705418" atv="21.817656" distorted="true" rx="-6.5" ry="15.0" rz="1.862155" edge="top" oy="0" width="128" height="112"  linkedscene="scene_Z_IMG_6928_Panorama" />
+
+	</scene>
+
+	<scene name="scene_Z_IMG_6928_Panorama" title="رؤساء الدولة الجزائرية" onstart="" thumburl="panos/Z_IMG_6928_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-116.737" vlookat="-0.417" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Z_IMG_6928_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4325" tiledimageheight="4325">
+				<cube url="panos/Z_IMG_6928_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2163" tiledimageheight="2163">
+				<cube url="panos/Z_IMG_6928_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Z_IMG_6928_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/Z_IMG_6928_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/Z_IMG_6928_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="57.150" atv="20.558" linkedscene="scene_Z_IMG_6922_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="237.354428" atv="21.065563" distorted="true" rx="-1.25" ry="10.75" rz="1.482253" edge="top" oy="0" width="128" height="112"  linkedscene="scene_Z_IMG_6940_Panorama" />
+
+	</scene>
+
+	<scene name="scene_Z_IMG_6940_Panorama" title="رؤساء الدولة الجزائرية" onstart="" thumburl="panos/Z_IMG_6940_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-171.325" vlookat="-0.218" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Z_IMG_6940_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4339" tiledimageheight="4339">
+				<cube url="panos/Z_IMG_6940_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2170" tiledimageheight="2170">
+				<cube url="panos/Z_IMG_6940_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Z_IMG_6940_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/Z_IMG_6940_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/Z_IMG_6940_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="2.197" atv="18.586" linkedscene="scene_Z_IMG_6928_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="182.584699" atv="21.307129" distorted="true" rx="-2.5" ry="15.25" rz="1.06836" edge="top" oy="0" width="128" height="112"  linkedscene="scene_Z_IMG_6949_Panorama" />
+		
+
+	</scene>
+
+	<scene name="scene_Z_IMG_6949_Panorama" title="رؤساء الدولة الجزائرية" onstart="" thumburl="panos/Z_IMG_6949_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-54.573" vlookat="0.678" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Z_IMG_6949_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4330" tiledimageheight="4330">
+				<cube url="panos/Z_IMG_6949_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2165" tiledimageheight="2165">
+				<cube url="panos/Z_IMG_6949_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Z_IMG_6949_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/Z_IMG_6949_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/Z_IMG_6949_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="120.271" atv="18.940" linkedscene="scene_Z_IMG_6940_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-60.646323" atv="22.2472" distorted="true" rx="0.75" ry="3.5" rz="2.356228" edge="top" oy="0" width="128" height="112"  linkedscene="scene_Z_IMG_6955_Panorama" />
+
+	</scene>
+
+	<scene name="scene_Z_IMG_6955_Panorama" title="رؤساء الدولة الجزائرية" onstart="" thumburl="panos/Z_IMG_6955_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-50.684" vlookat="-0.258" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Z_IMG_6955_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4338" tiledimageheight="4338">
+				<cube url="panos/Z_IMG_6955_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2169" tiledimageheight="2169">
+				<cube url="panos/Z_IMG_6955_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Z_IMG_6955_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/Z_IMG_6955_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/Z_IMG_6955_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="120.061" atv="19.900" linkedscene="scene_Z_IMG_6949_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-50.617684" atv="23.455528" distorted="true" rx="-36.25" ry="59.25" rz="50.881613" edge="top" oy="0" width="128" height="112"  linkedscene="scene_3_IMG_6972_Panorama" />
+		<!--<hotspot name="spot2" style="skin_hotspotstyle" ath="-56.451988" atv="21.142335" distorted="true" rx="-2.5" ry="3.0" rz="2.266773" edge="top" oy="0" width="128" height="112"  linkedscene="scene_3_IMG_6972_Panorama" />
+		-->
+	</scene>
+
+	<scene name="scene_3_IMG_6972_Panorama" title="رحلة في الذاكرة" onstart="" thumburl="panos/3_IMG_6972_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="109.666" vlookat="-0.931" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/3_IMG_6972_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4326" tiledimageheight="4326">
+				<cube url="panos/3_IMG_6972_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2163" tiledimageheight="2163">
+				<cube url="panos/3_IMG_6972_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/3_IMG_6972_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/3_IMG_6972_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/3_IMG_6972_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="258.229941" atv="16.249824" distorted="true" rx="-40.25" ry="-60.0" rz="-59.268756" edge="top" oy="0" width="128" height="112" scale="0.973374" linkedscene="scene_Z_IMG_6955_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-30.74333" atv="15.771535" distorted="true" rx="-39.0" ry="66.0" rz="57.753315" edge="top" oy="0" width="128" height="112" scale="1.063929"  linkedscene="scene_A_IMG_6979_Panorama" />
+
+	</scene>
+
+	<scene name="scene_A_IMG_6979_Panorama" title="الوجه الحضاري للجزائر قبل الإحتلال الفرنسي" onstart="" thumburl="panos/A_IMG_6979_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="69.972" vlookat="-0.381" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/A_IMG_6979_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4330" tiledimageheight="4330">
+				<cube url="panos/A_IMG_6979_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2165" tiledimageheight="2165">
+				<cube url="panos/A_IMG_6979_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/A_IMG_6979_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/A_IMG_6979_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/A_IMG_6979_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="140.286415" atv="20.98632" distorted="true" rx="-36.5" ry="-63.0" rz="-53.8253" edge="top" oy="0" width="128" height="112" linkedscene="scene_3_IMG_6972_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="96.001887" atv="22.053187" distorted="true" rx="-37.25" ry="-59.25" rz="-50.139522" edge="top" oy="0" width="128" height="112" scale="1.126303"  linkedscene="scene_B_IMG_6993_Panorama" />
+
+	</scene>
+
+	<scene name="scene_B_IMG_6993_Panorama" title="الوجه الحضاري للجزائر قبل الإحتلال الفرنسي" onstart="" thumburl="panos/B_IMG_6993_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="119.516" vlookat="0.472" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/B_IMG_6993_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4333" tiledimageheight="4333">
+				<cube url="panos/B_IMG_6993_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2167" tiledimageheight="2167">
+				<cube url="panos/B_IMG_6993_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/B_IMG_6993_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/B_IMG_6993_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/B_IMG_6993_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="21.365288" atv="15.227262" distorted="true" rx="-32.25" ry="10.25" rz="8.429322" edge="top" oy="0" width="128" height="112" scale="0.738711" linkedscene="scene_A_IMG_6979_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="121.182198" atv="24.221239" distorted="true" rx="0" ry="0" rz="-0.104062" edge="top" oy="0" width="128" height="112" scale="0.826211" linkedscene="scene_B_IMG_7007_Panorama" />
+
+	</scene>
+
+	<scene name="scene_B_IMG_7007_Panorama" title="الوجه الحضاري للجزائر قبل الإحتلال الفرنسي" onstart="" thumburl="panos/B_IMG_7007_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="242.644" vlookat="0.937" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/B_IMG_7007_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4343" tiledimageheight="4343">
+				<cube url="panos/B_IMG_7007_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2172" tiledimageheight="2172">
+				<cube url="panos/B_IMG_7007_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/B_IMG_7007_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/B_IMG_7007_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/B_IMG_7007_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="60.790184" atv="21.913495" distorted="true" rx="0" ry="0" rz="-0.379428" edge="top" oy="0" width="128" height="112" scale="0.855626" linkedscene="scene_B_IMG_6993_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="243.924927" atv="23.898631" distorted="true" rx="0" ry="0" rz="-0.686939" edge="top" oy="0" width="128" height="112" scale="0.895883" linkedscene="scene_B_IMG_7019_Panorama" />
+
+	</scene>
+
+	<scene name="scene_B_IMG_7019_Panorama" title="الوجه الحضاري للجزائر قبل الإحتلال الفرنسي" onstart="" thumburl="panos/B_IMG_7019_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-88.198" vlookat="0.678" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/B_IMG_7019_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4343" tiledimageheight="4343">
+				<cube url="panos/B_IMG_7019_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2172" tiledimageheight="2172">
+				<cube url="panos/B_IMG_7019_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/B_IMG_7019_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/B_IMG_7019_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/B_IMG_7019_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="149.221449" atv="21.865816" distorted="true" rx="0" ry="0" rz="-0.155455" edge="top" oy="0" width="128" height="112" scale="0.965622" linkedscene="scene_B_IMG_7007_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="238.692827" atv="13.974319" distorted="true" rx="-28.5" ry="68.0" rz="57.169153" edge="top" oy="0" width="128" height="112" scale="1.098508" linkedscene="scene_A_IMG_7034_Panorama" />
+
+	</scene>
+
+	<scene name="scene_A_IMG_7034_Panorama" title="كرونولوجية الأحداث الخاصة بالمقاومات الشعبية" onstart="" thumburl="panos/A_IMG_7034_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="26.130" vlookat="-1.670" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/A_IMG_7034_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4354" tiledimageheight="4354">
+				<cube url="panos/A_IMG_7034_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2177" tiledimageheight="2177">
+				<cube url="panos/A_IMG_7034_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1089" tiledimageheight="1089">
+				<cube url="panos/A_IMG_7034_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/A_IMG_7034_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/A_IMG_7034_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="260.859748" atv="20.069806" distorted="true" rx="-29.5" ry="-64.0" rz="-43.821972" edge="top" oy="0" width="128" height="112" linkedscene="scene_B_IMG_7019_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="139.740649" atv="15.242577" distorted="true" rx="-29.5" ry="65.5" rz="51.427046" edge="top" oy="0" width="128" height="112"  linkedscene="scene_C_IMG_7049_Panorama" />
+
+	</scene>
+
+	<scene name="scene_C_IMG_7049_Panorama" title="كرونولوجية الأحداث الخاصة بالمقاومات الشعبية" onstart="" thumburl="panos/C_IMG_7049_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="44.207" vlookat="-0.078" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/C_IMG_7049_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4335" tiledimageheight="4335">
+				<cube url="panos/C_IMG_7049_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2168" tiledimageheight="2168">
+				<cube url="panos/C_IMG_7049_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/C_IMG_7049_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/C_IMG_7049_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/C_IMG_7049_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="139.823607" atv="20.023212" distorted="true" rx="-35.75" ry="-32.5" rz="-22.007259" edge="top" oy="0" width="128" height="112" linkedscene="scene_A_IMG_7034_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-47.965201" atv="22.330733" distorted="true" rx="-32.0" ry="57.75" rz="38.958927" edge="top" oy="0" width="128" height="112" scale="1.095219"  linkedscene="scene_D_IMG_6156_Panorama" />
+		
+	</scene>
+
+	<scene name="scene_D_IMG_6156_Panorama" title="كرونولوجية الأحداث الخاصة بالمقاومات الشعبية" onstart="" thumburl="panos/D_IMG_6156_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-17.364" vlookat="-1.587" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/D_IMG_6156_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4031" tiledimageheight="4031">
+				<cube url="panos/D_IMG_6156_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/D_IMG_6156_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/D_IMG_6156_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/D_IMG_6156_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/D_IMG_6156_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="150.147285" atv="15.06217" distorted="true" rx="24.75" ry="58.5" rz="-43.323203" edge="top" oy="0" width="128" height="112" scale="0.955547"  linkedscene="scene_C_IMG_7049_Panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-16.081408" atv="17.936331" distorted="true" rx="-28.5" ry="-4.5" rz="-0.163871" edge="top" oy="0" width="128" height="112" scale="0.656204"  linkedscene="scene_d_img_6163_panorama" />
+	
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_D_IMG_6163_Panorama" title="كرونولوجية الأحداث الخاصة بالمقاومات الشعبية" onstart="" thumburl="panos/D_IMG_6163_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="113.074" vlookat="2.887" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/D_IMG_6163_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4030" tiledimageheight="4030">
+				<cube url="panos/D_IMG_6163_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/D_IMG_6163_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/D_IMG_6163_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/D_IMG_6163_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/D_IMG_6163_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-70.550643" atv="21.301048" distorted="true" rx="-25.5" ry="-10.0" rz="-0.156264" edge="top" oy="0" width="128" height="112" scale="0.651629"  linkedscene="scene_d_img_6156_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="147.477423" atv="21.39805" distorted="true" rx="-23.75" ry="25.5" rz="13.824532" edge="top" oy="0" width="128" height="112" scale="0.648381"  linkedscene="scene_e_img_6170_panorama" />
+
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_E_IMG_6170_Panorama" title="كرونولوجية الأحداث الخاصة بالمقاومات الشعبية" onstart="" thumburl="panos/E_IMG_6170_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-36.064" vlookat="2.157" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/E_IMG_6170_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4030" tiledimageheight="4030">
+				<cube url="panos/E_IMG_6170_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/E_IMG_6170_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/E_IMG_6170_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/E_IMG_6170_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/E_IMG_6170_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="176.648749" atv="22.864046" distorted="true" rx="-38.0" ry="-61.0" rz="-57.448176" edge="top" oy="0" width="128" height="112" scale="0.822509"  linkedscene="scene_d_img_6163_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="72.189176" atv="20.788275" distorted="true" rx="-24.25" ry="-44.0" rz="-22.684899" edge="top" oy="0" width="128" height="112" scale="0.756272"  linkedscene="scene_f_img_5449_panorama" />
+	
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+			 
+	</scene>
+
+	<scene name="scene_F_IMG_5449_Panorama" title="كرونولوجية الأحداث الخاصة بالحركة الوطنية" onstart="" thumburl="panos/F_IMG_5449_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-175.113" vlookat="1.677" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/F_IMG_5449_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4181" tiledimageheight="4181">
+				<cube url="panos/F_IMG_5449_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/F_IMG_5449_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/F_IMG_5449_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/F_IMG_5449_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/F_IMG_5449_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-15.693765" atv="24.128398" distorted="true" rx="-32.75" ry="51.25" rz="41.96124" edge="top" oy="0" width="128" height="112" scale="0.882117"  linkedscene="scene_e_img_6170_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="143.825126" atv="27.023834" distorted="true" rx="-28.5" ry="-51.25" rz="-47.826377" edge="top" oy="0" width="128" height="112" scale="0.841636"  linkedscene="scene_f_img_5457_panorama" />
+		
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+
+	<scene name="scene_F_IMG_5457_Panorama" title="مجازر 8 ماي 1945" onstart="" thumburl="panos/F_IMG_5457_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-108.738" vlookat="0.993" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/F_IMG_5457_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4203" tiledimageheight="4203">
+				<cube url="panos/F_IMG_5457_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/F_IMG_5457_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/F_IMG_5457_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/F_IMG_5457_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/F_IMG_5457_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="56.623491" atv="20.692615" distorted="true" rx="-28.5" ry="22.5" rz="15.604633" edge="top" oy="0" width="128" height="112" scale="0.660812"  linkedscene="scene_f_img_5449_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="165.442637" atv="18.809215" distorted="true" rx="-27.5" ry="-1.5" rz="0.013266" edge="top" oy="0" width="128" height="112" scale="0.603963"  linkedscene="scene_g_img_6518_panorama" />
+		
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_G_IMG_6518_Panorama" title="كرونولوجية الأحداث من 1954 إلى 1962" onstart="" thumburl="panos/G_IMG_6518_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="39.122" vlookat="6.214" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/G_IMG_6518_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4032" tiledimageheight="4032">
+				<cube url="panos/G_IMG_6518_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/G_IMG_6518_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/G_IMG_6518_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/G_IMG_6518_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/G_IMG_6518_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="151.581278" atv="20.004707" distorted="true" rx="-29.75" ry="10.25" rz="0.247461" edge="top" oy="0" width="128" height="112" scale="0.596763"  linkedscene="scene_f_img_5457_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="81.080653" atv="23.674938" distorted="true" rx="-28.5" ry="-55.25" rz="-40.929481" edge="top" oy="0" width="128" height="112" scale="0.803816" alpha="0.3" linkedscene="scene_g_img_6534_panorama" />
+		
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+
+	<scene name="scene_G_IMG_6534_Panorama" title="كرونولوجية الأحداث من 1954 إلى 1962" onstart="" thumburl="panos/G_IMG_6534_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-126.084" vlookat="1.641" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/G_IMG_6534_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4030" tiledimageheight="4030">
+				<cube url="panos/G_IMG_6534_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/G_IMG_6534_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/G_IMG_6534_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/G_IMG_6534_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/G_IMG_6534_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-0.145972" atv="31.790081" distorted="true" rx="-24.75" ry="62.5" rz="66.601156" edge="top" oy="0" width="128" height="112" scale="1.038199"  linkedscene="scene_g_img_6518_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="240.205204" atv="29.445349" distorted="true" rx="-19.0" ry="5.5" rz="-3.766559" edge="top" oy="0" width="128" height="112" scale="0.685707"  linkedscene="scene_h_img_6541_panorama" />
+	
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+	
+	<scene name="scene_H_IMG_6541_Panorama" title="كرونولوجية الأحداث من 1954 إلى 1962" onstart="" thumburl="panos/H_IMG_6541_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="109.641" vlookat="2.221" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/H_IMG_6541_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4030" tiledimageheight="4030">
+				<cube url="panos/H_IMG_6541_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/H_IMG_6541_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/H_IMG_6541_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/H_IMG_6541_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/H_IMG_6541_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-66.15398" atv="32.442039" distorted="true" rx="0" ry="0" rz="-1.723179" edge="top" oy="0" width="128" height="112" scale="0.737609"  linkedscene="scene_g_img_6534_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="116.168165" atv="30.638094" distorted="true" rx="0" ry="0" rz="0.606807" edge="top" oy="0" width="128" height="112" scale="0.710829"  linkedscene="scene_h_img_5472_panorama" />
+		
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_H_IMG_5472_Panorama" title="كرونولوجية الأحداث من 1954 إلى 1962" onstart="" thumburl="panos/H_IMG_5472_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="13.288" vlookat="1.552" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/H_IMG_5472_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4029" tiledimageheight="4029">
+				<cube url="panos/H_IMG_5472_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/H_IMG_5472_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/H_IMG_5472_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/H_IMG_5472_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/H_IMG_5472_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="267.722762" atv="24.716508" distorted="true" rx="0" ry="0" rz="0.762345" edge="top" oy="0" width="128" height="112" scale="0.846699"  linkedscene="scene_h_img_6541_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-3.389084" atv="22.522046" distorted="true" rx="0" ry="0" rz="-0.185091" edge="top" oy="0" width="128" height="112" scale="0.771542"  linkedscene="scene_h_img_6553_panorama" />
+		
+<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />			
+			
+	</scene>
+
+
+
+
+	<scene name="scene_H_IMG_6553_Panorama" title="كرونولوجية الأحداث من 1954 إلى 1962" onstart="" thumburl="panos/H_IMG_6553_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="165.0" vlookat="0.0" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/H_IMG_6553_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4258" tiledimageheight="4258">
+				<cube url="panos/H_IMG_6553_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2129" tiledimageheight="2129">
+				<cube url="panos/H_IMG_6553_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/H_IMG_6553_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/H_IMG_6553_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/H_IMG_6553_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-19.169" atv="19.883" distorted="true" rx="0" ry="0" rz="0" edge="top" oy="0" width="128" height="112" scale="0.693981"  linkedscene="scene_h_img_5472_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="75.157562" atv="29.035198" distorted="true" rx="0" ry="0" rz="0.66377" edge="top" oy="0" width="128" height="112" scale="0.832433"  linkedscene="scene_h_img_6561_panorama" />
+	
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+			 
+	</scene>
+
+	<scene name="scene_H_IMG_6561_Panorama" title="كرونولوجية الأحداث من 1954 إلى 1962" onstart="" thumburl="panos/H_IMG_6561_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-175.970" vlookat="-0.179" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/H_IMG_6561_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4025" tiledimageheight="4025">
+				<cube url="panos/H_IMG_6561_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/H_IMG_6561_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/H_IMG_6561_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/H_IMG_6561_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/H_IMG_6561_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="3.600517" atv="32.581666" distorted="true" rx="0" ry="0" rz="0.53329" edge="top" oy="0" width="128" height="112" scale="0.878597"  linkedscene="scene_h_img_6553_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="184.167858" atv="27.898361" distorted="true" rx="0" ry="0" rz="1.381957" edge="top" oy="0" width="128" height="112" scale="0.781633"  linkedscene="scene_h_img_6568_panorama" />
+	
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_H_IMG_6568_Panorama" title="كرونولوجية الأحداث من 1954 إلى 1962" onstart="" thumburl="panos/H_IMG_6568_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-212.833" vlookat="0.484" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/H_IMG_6568_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4031" tiledimageheight="4031">
+				<cube url="panos/H_IMG_6568_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/H_IMG_6568_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/H_IMG_6568_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/H_IMG_6568_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/H_IMG_6568_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-27.592046" atv="31.942162" distorted="true" rx="0" ry="0" rz="-2.641097" edge="top" oy="0" width="128" height="112" scale="0.761582"  linkedscene="scene_h_img_6561_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="144.667639" atv="34.535178" distorted="true" rx="3.25" ry="8.25" rz="3.207369" edge="top" oy="0" width="128" height="112" scale="0.739085"  linkedscene="scene_h_img_5487_panorama" />
+		
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_H_IMG_5487_Panorama" title="كرونولوجية الأحداث من 1954 إلى 1962" onstart="" thumburl="panos/H_IMG_5487_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-170.050" vlookat="-1.147" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/H_IMG_5487_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4608" tiledimageheight="4608">
+				<cube url="panos/H_IMG_5487_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2304" tiledimageheight="2304">
+				<cube url="panos/H_IMG_5487_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1152" tiledimageheight="1152">
+				<cube url="panos/H_IMG_5487_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="576" tiledimageheight="576">
+				<cube url="panos/H_IMG_5487_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/H_IMG_5487_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="22.482467" atv="34.419837" distorted="true" rx="-3.25" ry="3.25" rz="1.27898" edge="top" oy="0" width="128" height="112" scale="0.748751"  linkedscene="scene_h_img_6568_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="183.959643" atv="24.061322" distorted="true" rx="-29.5" ry="41.75" rz="28.009971" edge="top" oy="0" width="128" height="112" scale="0.7354"  linkedscene="scene_j_img_6575_panorama" />
+	
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+
+	
+	<scene name="scene_J_IMG_6575_Panorama" title="السياسة الإستعمارية الفرنسية" onstart="" thumburl="panos/J_IMG_6575_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-91.350" vlookat="-0.150" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/J_IMG_6575_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4030" tiledimageheight="4030">
+				<cube url="panos/J_IMG_6575_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/J_IMG_6575_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/J_IMG_6575_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/J_IMG_6575_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/J_IMG_6575_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="102.474139" atv="20.553122" distorted="true" rx="-19.0" ry="-39.75" rz="-20.07769" edge="top" oy="0" width="128" height="112" scale="0.650328"  linkedscene="scene_h_img_5487_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="245.297306" atv="20.963327" distorted="true" rx="-35.5" ry="32.75" rz="28.982652" edge="top" oy="0" width="128" height="112" scale="0.716536"  linkedscene="scene_j_img_6582_panorama" />
+	
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+
+	<scene name="scene_J_IMG_6582_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/J_IMG_6582_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="5.001" vlookat="3.059" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/J_IMG_6582_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4026" tiledimageheight="4026">
+				<cube url="panos/J_IMG_6582_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/J_IMG_6582_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/J_IMG_6582_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/J_IMG_6582_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/J_IMG_6582_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="92.724004" atv="29.077882" distorted="true" rx="-21.25" ry="13.0" rz="5.819073" edge="top" oy="0" width="128" height="112" scale="0.674828"  linkedscene="scene_j_img_6575_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="266.916543" atv="34.765463" distorted="true" rx="-18.5" ry="10.25" rz="9.384292" edge="top" oy="0" width="128" height="112" scale="0.728815"  linkedscene="scene_k_img_5502_panorama" />
+	
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_K_IMG_5502_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/K_IMG_5502_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-231.672" vlookat="1.792" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/K_IMG_5502_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="3965" tiledimageheight="3965">
+				<cube url="panos/K_IMG_5502_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1983" tiledimageheight="1983">
+				<cube url="panos/K_IMG_5502_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/K_IMG_5502_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/K_IMG_5502_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/K_IMG_5502_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="251.548071" atv="25.293832" distorted="true" rx="-30.25" ry="-68.5" rz="-57.389109" edge="top" oy="0" width="128" height="112" scale="0.862069"  linkedscene="scene_j_img_6582_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="135.421395" atv="24.977979" distorted="true" rx="-21.75" ry="-6.0" rz="4.029894" edge="top" oy="0" width="128" height="112" scale="0.700252"  linkedscene="scene_k_img_5509_panorama" />
+
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_K_IMG_5509_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/K_IMG_5509_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-182.567" vlookat="7.444" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/K_IMG_5509_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4026" tiledimageheight="4026">
+				<cube url="panos/K_IMG_5509_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/K_IMG_5509_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/K_IMG_5509_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/K_IMG_5509_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/K_IMG_5509_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="11.259201" atv="19.626918" distorted="true" rx="-22.5" ry="2.5" rz="1.207971" edge="top" oy="0" width="128" height="112" scale="0.638732"  linkedscene="scene_k_img_5502_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="243.091659" atv="32.093743" distorted="true" rx="-27.0" ry="4.5" rz="1.452937" edge="top" oy="0" width="128" height="112" scale="0.659492"  linkedscene="scene_k_img_5787_panorama" />
+
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+
+
+	<scene name="scene_K_IMG_5787_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/K_IMG_5787_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-86.508" vlookat="7.398" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/K_IMG_5787_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4026" tiledimageheight="4026">
+				<cube url="panos/K_IMG_5787_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/K_IMG_5787_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/K_IMG_5787_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/K_IMG_5787_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/K_IMG_5787_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="138.675468" atv="33.821876" distorted="true" rx="-12.25" ry="10.5" rz="3.584143" edge="top" oy="0" width="128" height="112" scale="0.674154"  linkedscene="scene_k_img_5509_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-38.686319" atv="27.689137" distorted="true" rx="-20.25" ry="-2.25" rz="-0.097681" edge="top" oy="0" width="128" height="112" scale="0.70941"  linkedscene="scene_k_img_5796_panorama" />
+
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+
+	<scene name="scene_K_IMG_5796_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/K_IMG_5796_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-198.923" vlookat="2.964" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/K_IMG_5796_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4506" tiledimageheight="4506">
+				<cube url="panos/K_IMG_5796_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2253" tiledimageheight="2253">
+				<cube url="panos/K_IMG_5796_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1127" tiledimageheight="1127">
+				<cube url="panos/K_IMG_5796_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/K_IMG_5796_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/K_IMG_5796_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="34.583707" atv="26.978099" distorted="true" rx="-33.5" ry="12.0" rz="8.754816" edge="top" oy="0" width="128" height="112" scale="0.647086"  linkedscene="scene_k_img_5787_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="225.971225" atv="20.183202" distorted="true" rx="-36.5" ry="-12.75" rz="-7.899506" edge="top" oy="0" width="128" height="112" scale="0.696761"  linkedscene="scene_k_img_5516_panorama" />
+
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+	
+	<scene name="scene_K_IMG_5516_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/K_IMG_5516_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-284.586" vlookat="2.108" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/K_IMG_5516_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4029" tiledimageheight="4029">
+				<cube url="panos/K_IMG_5516_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/K_IMG_5516_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/K_IMG_5516_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/K_IMG_5516_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/K_IMG_5516_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="259.765708" atv="21.88373" distorted="true" rx="-28.5" ry="-0.75" rz="-2.275853" edge="top" oy="0" width="128" height="112" scale="0.650328"  linkedscene="scene_k_img_5796_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="90.114938" atv="18.38085" distorted="true" rx="-37.75" ry="-50.25" rz="-37.98695" edge="top" oy="0" width="128" height="112" scale="0.671464"  linkedscene="scene_l_img_5523_panorama" />
+
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_L_IMG_5523_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/L_IMG_5523_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-11.171" vlookat="1.163" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/L_IMG_5523_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4239" tiledimageheight="4239">
+				<cube url="panos/L_IMG_5523_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2120" tiledimageheight="2120">
+				<cube url="panos/L_IMG_5523_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/L_IMG_5523_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/L_IMG_5523_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/L_IMG_5523_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="148.349043" atv="22.467786" distorted="true" rx="-34.5" ry="38.5" rz="30.832855" edge="top" oy="0" width="128" height="112" scale="0.657517"  linkedscene="scene_k_img_5516_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-13.589176" atv="6.817025" distorted="true" rx="-37.0" ry="-64.75" rz="-61.285645" edge="top" oy="0" width="128" height="112" scale="0.464353"   linkedscene="scene_l_img_5531_panorama" />
+	
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+
+	<scene name="scene_L_IMG_5531_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/L_IMG_5531_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="56.910" vlookat="-0.330" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/L_IMG_5531_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4029" tiledimageheight="4029">
+				<cube url="panos/L_IMG_5531_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/L_IMG_5531_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/L_IMG_5531_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/L_IMG_5531_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/L_IMG_5531_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="183.906879" atv="15.814201" distorted="true" rx="-30.75" ry="27.75" rz="12.289119" edge="top" oy="0" width="128" height="112" scale="0.550903"  linkedscene="scene_l_img_5523_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="254.487685" atv="15.642065" distorted="true" rx="-37.25" ry="-34.0" rz="-22.125491" edge="top" oy="0" width="128" height="112" scale="0.64386"  linkedscene="scene_m_img_5539_panorama" />
+
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+	
+		<scene name="scene_M_IMG_5539_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/M_IMG_5539_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-44.169" vlookat="-0.322" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/M_IMG_5539_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4027" tiledimageheight="4027">
+				<cube url="panos/M_IMG_5539_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/M_IMG_5539_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/M_IMG_5539_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/M_IMG_5539_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/M_IMG_5539_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="237.985652" atv="14.668251" distorted="true" rx="0" ry="0" rz="-0.436529" edge="top" oy="0" width="128" height="112" scale="0.592602"  linkedscene="scene_l_img_5531_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="58.751203" atv="22.77867" distorted="true" rx="-44.25" ry="37.25" rz="39.483186" edge="top" oy="0" width="128" height="112" scale="0.769232"  linkedscene="scene_n_img_5547_panorama" />
+
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_N_IMG_5547_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/N_IMG_5547_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="211.780" vlookat="2.378" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/N_IMG_5547_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4198" tiledimageheight="4198">
+				<cube url="panos/N_IMG_5547_Panorama.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/N_IMG_5547_Panorama.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/N_IMG_5547_Panorama.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/N_IMG_5547_Panorama.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/N_IMG_5547_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="53.973912" atv="11.619642" distorted="true" rx="-47.75" ry="-9.25" rz="-10.016466" edge="top" oy="0" width="128" height="112" scale="0.563151"  linkedscene="scene_m_img_5539_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="214.438784" atv="17.995262" distorted="true" rx="-27.75" ry="13.0" rz="7.008069" edge="top" oy="0" width="128" height="112" scale="0.622348"  linkedscene="scene_o_img_5554_panorama" />
+		
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_O_IMG_5554_Panorama" title="من جرائم الإستعمار" onstart="" thumburl="panos/O_IMG_5554_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-7.028" vlookat="0.743" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/O_IMG_5554_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4029" tiledimageheight="4029">
+				<cube url="panos/O_IMG_5554_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/O_IMG_5554_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/O_IMG_5554_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/O_IMG_5554_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/O_IMG_5554_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="96.131251" atv="20.711263" distorted="true" rx="-27.0" ry="-5.25" rz="-5.967695" edge="top" oy="0" width="128" height="112" scale="0.582036"  linkedscene="scene_n_img_5547_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-26.245256" atv="19.635026" distorted="true" rx="-22.0" ry="39.25" rz="24.399217" edge="top" oy="0" width="128" height="112" scale="0.582618"  linkedscene="scene_p_img_5566_panorama" />
+
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+
+	<scene name="scene_P_IMG_5566_Panorama" title="من ذاكرتنا" onstart="" thumburl="panos/P_IMG_5566_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-72.159" vlookat="-1.372" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/P_IMG_5566_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4027" tiledimageheight="4027">
+				<cube url="panos/P_IMG_5566_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/P_IMG_5566_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/P_IMG_5566_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/P_IMG_5566_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/P_IMG_5566_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="125.647193" atv="27.713185" distorted="true" rx="-28.0" ry="-59.5" rz="-49.550155" edge="top" oy="0" width="128" height="112" scale="1.004514"  linkedscene="scene_o_img_5554_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-68.915186" atv="25.507087" distorted="true" rx="-38.75" ry="-47.5" rz="-37.291979" edge="top" oy="0" width="128" height="112" scale="0.985618"  linkedscene="scene_q_img_5573_panorama" />
+		
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_Q_IMG_5573_Panorama" title="من ذاكرتنا" onstart="" thumburl="panos/Q_IMG_5573_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="10.870" vlookat="0.987" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Q_IMG_5573_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4029" tiledimageheight="4029">
+				<cube url="panos/Q_IMG_5573_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Q_IMG_5573_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Q_IMG_5573_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/Q_IMG_5573_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/Q_IMG_5573_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="257.496901" atv="24.099968" distorted="true" rx="-27.75" ry="31.25" rz="23.017784" edge="top" oy="0" width="128" height="112" scale="0.628599"  linkedscene="scene_p_img_5566_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="168.242843" atv="23.204655" distorted="true" rx="-19.75" ry="17.25" rz="13.908869" edge="top" oy="0" width="128" height="112" scale="0.616158"  linkedscene="scene_r_img_5580_panorama" />
+	
+<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />			
+			
+	</scene>
+
+	<scene name="scene_R_IMG_5580_Panorama" title="من ذاكرتنا" onstart="" thumburl="panos/R_IMG_5580_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-123.460" vlookat="1.521" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/R_IMG_5580_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4030" tiledimageheight="4030">
+				<cube url="panos/R_IMG_5580_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/R_IMG_5580_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/R_IMG_5580_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/R_IMG_5580_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/R_IMG_5580_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="31.418583" atv="20.331368" distorted="true" rx="-20.5" ry="32.75" rz="21.391633" edge="top" oy="0" width="128" height="112" scale="0.600953"  linkedscene="scene_q_img_5573_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-33.632459" atv="21.061836" distorted="true" rx="-13.5" ry="6.75" rz="3.870774" edge="top" oy="0" width="128" height="112" scale="0.629857"  linkedscene="scene_r_img_5821_panorama" />
+		
+		 <!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		 
+	</scene>
+
+	<scene name="scene_R_IMG_5821_Panorama" title="من ذاكرتنا" onstart="" thumburl="panos/R_IMG_5821_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-173.449" vlookat="2.665" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/R_IMG_5821_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4029" tiledimageheight="4029">
+				<cube url="panos/R_IMG_5821_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/R_IMG_5821_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/R_IMG_5821_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/R_IMG_5821_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/R_IMG_5821_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-4.195834" atv="30.127562" distorted="true" rx="-20.5" ry="32.25" rz="15.659124" edge="top" oy="0" width="128" height="112" scale="0.680926"  linkedscene="scene_r_img_5580_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="81.476206" atv="24.039466" distorted="true" rx="-39.5" ry="11.5" rz="12.944018" edge="top" oy="0" width="128" height="112" scale="0.680926"  linkedscene="scene_r_img_5814_panorama" />
+	
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+	
+	
+
+	<scene name="scene_R_IMG_5814_Panorama" title="من ذاكرتنا" onstart="" thumburl="panos/R_IMG_5814_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-185.003" vlookat="3.243" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/R_IMG_5814_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4027" tiledimageheight="4027">
+				<cube url="panos/R_IMG_5814_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/R_IMG_5814_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/R_IMG_5814_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/R_IMG_5814_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/R_IMG_5814_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-85.613042" atv="23.437279" distorted="true" rx="-22.0" ry="-11.75" rz="-8.298268" edge="top" oy="0" width="128" height="112" scale="0.616158"  linkedscene="scene_r_img_5821_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-9.635" atv="24.765" distorted="true" rx="0" ry="0" rz="2.75" edge="top" oy="0" width="128" height="112" scale="0.693981"  linkedscene="scene_r_img_5806_panorama" />
+	
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_R_IMG_5806_Panorama" title="من ذاكرتنا" onstart="" thumburl="panos/R_IMG_5806_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-186.656" vlookat="1.939" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/R_IMG_5806_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4027" tiledimageheight="4027">
+				<cube url="panos/R_IMG_5806_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/R_IMG_5806_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/R_IMG_5806_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/R_IMG_5806_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/R_IMG_5806_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="267.811591" atv="18.614232" distorted="true" rx="-22.75" ry="18.0" rz="6.096179" edge="top" oy="0" width="128" height="112" scale="0.631748"  linkedscene="scene_r_img_5814_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="13.508611" atv="16.200266" distorted="true" rx="-36.25" ry="-30.75" rz="-22.368907" edge="top" oy="0" width="128" height="112" scale="0.657517"  linkedscene="scene_r_img_5830_panorama" />
+	
+	<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+	
+	</scene>
+
+
+	<scene name="scene_R_IMG_5830_Panorama" title="من ذاكرتنا" onstart="" thumburl="panos/R_IMG_5830_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="137.303" vlookat="2.737" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/R_IMG_5830_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4027" tiledimageheight="4027">
+				<cube url="panos/R_IMG_5830_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/R_IMG_5830_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/R_IMG_5830_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/R_IMG_5830_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/R_IMG_5830_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-39.169663" atv="14.737238" distorted="true" rx="-28.5" ry="17.75" rz="9.358247" edge="top" oy="0" width="128" height="112" scale="0.652281"  linkedscene="scene_r_img_5806_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="145.832756" atv="14.146587" distorted="true" rx="-20.5" ry="-5.25" rz="0.031489" edge="top" oy="0" width="128" height="112" scale="0.644504"  linkedscene="scene_u_img_5588_panorama" />
+
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+
+
+	<scene name="scene_U_IMG_5588_Panorama" title="من ذاكرتنا" onstart="" thumburl="panos/U_IMG_5588_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-76.639" vlookat="1.006" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/U_IMG_5588_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4030" tiledimageheight="4030">
+				<cube url="panos/U_IMG_5588_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/U_IMG_5588_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/U_IMG_5588_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/U_IMG_5588_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/U_IMG_5588_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="129.176092" atv="15.005131" distorted="true" rx="-31.25" ry="-27.0" rz="-17.324538" edge="top" oy="0" width="128" height="112" scale="0.678887"  linkedscene="scene_r_img_5830_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-68.863984" atv="13.40896" distorted="true" rx="-30.5" ry="18.75" rz="9.097642" edge="top" oy="0" width="128" height="112" scale="0.616158"  linkedscene="scene_t_img_5595_panorama" />
+
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+	
+	<scene name="scene_T_IMG_5595_Panorama" title="الراية الوطنية و النشيد الوطني" onstart="" thumburl="panos/T_IMG_5595_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-212.942" vlookat="0.748" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/T_IMG_5595_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4029" tiledimageheight="4029">
+				<cube url="panos/T_IMG_5595_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/T_IMG_5595_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/T_IMG_5595_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/T_IMG_5595_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/T_IMG_5595_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle"  ath="-71.956734" atv="28.307511" distorted="true" rx="-33.75" ry="-56.0" rz="-55.776352" edge="top" oy="0" width="128" height="112" scale="0.674154"  linkedscene="scene_u_img_5588_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="179.752186" atv="18.941436" distorted="true" rx="-18.0" ry="-77.25" rz="-72.811374" edge="top" oy="0" width="128" height="112" scale="0.969012"  linkedscene="scene_u_img_5604_panorama" />
+		
+		<!-- autochange pano -->
+		
+		<events 
+       onidle="skin_nextscene(+1);"
+        />
+		
+	</scene>
+
+	<scene name="scene_U_IMG_5604_Panorama" title="ثمن الحرية" onstart="" thumburl="panos/U_IMG_5604_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-96.159" vlookat="1.598" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/U_IMG_5604_Panorama.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="4031" tiledimageheight="4031">
+				<cube url="panos/U_IMG_5604_Panorama.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/U_IMG_5604_Panorama.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/U_IMG_5604_Panorama.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="512" tiledimageheight="512">
+				<cube url="panos/U_IMG_5604_Panorama.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/U_IMG_5604_Panorama.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="25.749781" atv="33.998021" distorted="true" rx="-20.5" ry="42.25" rz="33.074523" edge="top" oy="0" width="128" height="112" scale="0.71154"  linkedscene="scene_t_img_5595_panorama" />
+		
+			<events 
+       onidle="loadscene(get(startscene), null, MERGE, BLEND(1));"
+        />
+	</scene>
+
+
+</krpano>

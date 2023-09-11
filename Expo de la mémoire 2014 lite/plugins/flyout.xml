@@ -1,0 +1,117 @@
+<krpano>
+	 <style name="flyoutimage"
+	       distorted="true"
+	       backup_rx="0"
+	       backup_ry="0"
+	       backup_rz="0"
+	       backup_scale="0"
+	       backup_zorder="0"
+		   backup_alpha="0"
+		   backup_volume="0"
+	       flying="0.0"
+	       flystate="0"
+	       onclick="if(flystate == 0, flyout_by_name(get(name)), flyback_by_name(get(name)) );"
+	       />
+		   
+	 <style name="flyoutvideo"
+	       distorted="true"
+	       backup_rx="0"
+	       backup_ry="0"
+	       backup_rz="0"
+	       backup_scale="0"
+	       backup_zorder="0"
+		   backup_alpha="0"
+		   backup_volume="0"
+	       flying="0.0"
+	       flystate="0"
+	       onclick="stopallsounds(); if(flystate == 0, flyout_by_name(get(name)), flyback_by_name(get(name)) );"
+	       />
+		   
+
+		   <!-- onclick="if(flystate == 0, flyout_by_name2(get(name)), flyback_by_name2(get(name)) ); togglepause();" -->
+		   
+	<!--
+		flyout/flyback actions
+		(for more stylish in/out animations play with different tweentypes and times)
+	-->
+
+	<action name="flyout_by_name">
+		<!-- make all other hotspots flying back -->
+		flyback_others();
+
+		<!--
+			for best control set 4 fly states:
+			0 = normal
+			1 = while flying out
+			2 = out
+			3 = while flying back
+		-->
+
+		<!-- save original position/rotation -->
+		if(hotspot[%1].flystate == 0,
+		    copy(hotspot[%1].backup_rx,     hotspot[%1].rx);
+		    copy(hotspot[%1].backup_ry,     hotspot[%1].ry);
+		    copy(hotspot[%1].backup_rz,     hotspot[%1].rz);
+		    copy(hotspot[%1].backup_scale,  hotspot[%1].scale);
+		    copy(hotspot[%1].backup_zorder, hotspot[%1].zorder);
+			copy(hotspot[%1].backup_alpha, hotspot[%1].alpha);
+			copy(hotspot[%1].backup_volume, hotspot[%1].volume);
+		  );
+
+		<!-- set new state -->
+		set(hotspot[%1].flystate,1);
+		set(hotspot[%1].zorder,99);
+
+		<!-- tween the rotations values to 0 for a flat screen view -->
+		tween(hotspot[%1].rx, 0);
+		tween(hotspot[%1].ry, 0);
+		tween(hotspot[%1].rz, 0);
+		tween(hotspot[%1].scale, 1.0);
+		tween(hotspot[%1].alpha, 1.0, 0.8,easeOutExpo);
+		tween(hotspot[%1].volume, 1.0);
+
+		<!--
+			tween 'flying' to 1.0,
+			this makes the hotspot independent from the panorama rotation and scaling
+		-->
+		tween(hotspot[%1].flying, 1.0, 0.5, default, set(hotspot[%1].flystate,2); );
+		
+	
+		
+	</action>
+	
+
+
+	<action name="flyback_by_name">
+		if(hotspot[%1].flystate != 3,
+			set(hotspot[%1].flystate,3);
+
+			<!-- tween back to the stored backup values -->
+			tween(hotspot[%1].rx,    get(hotspot[%1].backup_rx)    );
+			tween(hotspot[%1].ry,    get(hotspot[%1].backup_ry)    );
+			tween(hotspot[%1].rz,    get(hotspot[%1].backup_rz)    );
+			tween(hotspot[%1].scale, get(hotspot[%1].backup_scale) );
+			tween(hotspot[%1].alpha, get(hotspot[%1].backup_alpha), 0.5, easeInExpo);
+			tween(hotspot[%1].volume, get(hotspot[%1].backup_volume) );
+
+			copy(hotspot[%1].zorder, hotspot[%1].backup_zorder);
+
+			<!-- tween 'flying' also back to 0.0 -->
+			tween(hotspot[%1].flying, 0.0, 0.5, default, set(hotspot[%1].flystate,0); );
+			
+		
+		  );
+	</action>
+	
+	
+	<action name="flyback_others">
+		for(set(i,0), i LT hotspot.count, inc(i),
+			if(hotspot[%i].flystate GT 0, flyback_by_name(get(hotspot[get(i)].name)); );
+		  );
+	</action>
+	
+	
+	
+	
+	
+	</krpano>
