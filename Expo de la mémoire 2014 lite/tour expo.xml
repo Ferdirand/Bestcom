@@ -20,7 +20,6 @@
 		set(layer[backbutton].ondown, 'openurl(../index.html,_self);' );
 	</action>
 	<style name="button"
-		url="%SWFPATH%/plugins/textfield.swf"
 		children="false"
 		css="text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:16px;"
 		vcenter="true"
@@ -106,7 +105,7 @@
 
 	</scene> -->
 
-	<scene name="scene_1_IMG_6899_Panorama" title="تاريخ الجزائر من 1830 إلى 1962" onstart="" thumburl="panos/1_IMG_6899_Panorama.tiles/thumb.jpg" lat="36.73480333" lng="3.02136389" heading="0.0">
+	<scene name="scene_1_IMG_6899_Panorama" title="تاريخ الجزائر من 1830 إلى 1962" onstart="add_back_buttona()" thumburl="panos/1_IMG_6899_Panorama.tiles/thumb.jpg" lat="36.73480333" lng="3.02136389" heading="0.0">
 
 		<view hlookat="-183.813" vlookat="0.025" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
