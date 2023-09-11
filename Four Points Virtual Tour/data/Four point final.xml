@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <krpano version="1.20.7"
-        onstart="startup;add_back_buttona()"
+        onstart="startup"
         logkey="false"
         debugmode="false"
         debugkeys="true"
@@ -29,7 +29,7 @@
 		set(layer[backbutton].zorder, 99999);
 		set(layer[backbutton].alpha, 0.0);
 		set(layer[backbutton].onloaded, delayedcall(1.0,tween(alpha,0.7)); );
-		set(layer[backbutton].ondown, 'openurl(../index.html,_self);' );
+		set(layer[backbutton].ondown, 'openurl(../../index.html,_self);' );
 	</action>
 	<style name="button"
 		type="text"
@@ -150,6 +150,7 @@
 <!-- **** @PanoName="01-IMG_0787 Panorama" @PanoFile="L:/panos/Panos 2/multi/01-IMG_0787 Panorama.jpg" **** -->
 <!-- **** Width="13672px" Height="6836px" **** -->
 <scene name="pano10"
+onstart="add_back_buttona()"
 		title="Extérieur"
        heading="-151.99999999999929"
        group="panogroup44"
